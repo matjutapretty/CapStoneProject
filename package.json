@@ -1,5 +1,5 @@
 {
-  "name": "PSMS",
+  "name": "psms",
   "version": "1.0.0",
   "description": "PatientS Managment System",
   "main": "index.js",
@@ -13,8 +13,7 @@
   },
   "keywords": [],
   "author": {
-    "name": " ",
-    "email": " "
+    "name": "Pretty Matjuta, Siyabonga Mndebele, IN Mazibuko, Sudarshan R Vittal"
   },
   "license": "ISC",
   "dependencies": {

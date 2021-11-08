@@ -1,44 +1,42 @@
 <form action="/register" method="post">
     <div class="row">
         <div class="col-6 right"><label for="firstName">First Name:</label></div>
-        <div class="col-6"><input class="loginInput" type="text" name="firstName" value="{{Firstname}}" required></div>
+        <div class="col-6"><input class="txtBox" type="text" name="firstName" value="{{Firstname}}" required></div>
     </div>
 
     <div class="row">
         <div class="col-6 right"><label for="lastName">Last Name:</label></div>
-        <div class="col-6"><input class="loginInput" type="text" name="lastName" value="{{Lastname}}" required></div>
+        <div class="col-6"><input class="txtBox" type="text" name="lastName" value="{{Lastname}}" required></div>
     </div>
 
     <div class="row">
         <div class="col-6 right"><label for="DOB">Date of Birth:</label></div>
-        <div class="col-6"><input class="loginInput" type="date" name="DOB" value="{{DOB}}" required></div>
+        <div class="col-6"><input id="DOB" type="date" name="DOB" value="{{DOB}}" required></div>
     </div>
 
     <div class="row">
         <div class="col-6 right"><label for="gender">Gender:</label></div>
-        <div class="col-3">
+        <div class="col-6">
             <label for="female">Female</label>
-            <input class="loginInput" type="radio" name="DOB" id="female" value="Female" required>
-        </div>
-        <div class="col-3">
+            <input class="" type="radio" name="DOB" id="female" value="Female" required>
             <label for="male">Male</label>
-            <input class="loginInput" type="radio" name="DOB" id="male" value="Male" required>
+            <input class="" type="radio" name="DOB" id="male" value="Male" required>
         </div>
     </div>
 
     <div class="row">
         <div class="col-6 right"><label for="IDno">ID Number:</label></div>
-        <div class="col-6"><input class="loginInput" type="number" name="IDno" value="{{IDno}}" required></div>
+        <div class="col-6"><input class="txtBox" type="number" name="IDno" value="{{IDno}}" required></div>
     </div>
 
     <div class="row">
         <div class="col-6 right"><label for="cellNo">Cell Phone Number:</label></div>
-        <div class="col-6"><input class="loginInput" type="number" name="cellNo" value="{{cellNo}}" required></div>
+        <div class="col-6"><input class="txtBox" type="number" name="cellNo" value="{{cellNo}}" required></div>
     </div>
 
     <div class="row">
         <div class="col-6 right"><label for="email">Email:</label></div>
-        <div class="col-6"><input class="loginInput" type="email" name="email" value="{{email}}" required></div>
+        <div class="col-6"><input class="txtBox" type="email" name="email" value="{{email}}" required></div>
     </div>
     <div class="row">
         <div class="col-6 right"><label for="language">Language Preference:</label></div>
@@ -55,7 +53,7 @@
 
     <div class="row">
         <div class="col-6 right"><label for="pwd">Password:</label></div>
-        <div class="col-6"><input class="loginInput" type="password" name="password" value="{{password}}" required>
+        <div class="col-6"><input class="txtBox" type="password" name="password" value="{{password}}" required>
         </div>
     </div>
 

@@ -253,6 +253,7 @@ p {
 #mainBtn {
   position: absolute;
   bottom: 50%;
+  left: 0
 }
 
 .btn {
@@ -290,12 +291,30 @@ input {
   background-color: #77BDE1;
   border-radius: 2em;
   border: none;
+  padding: 0.1em;
 }
 
-.txtbox {
-  width: 20em;
+input[type='radio']:after {
+  background-color: #77BDE1;
+}
+
+#language{
+  background-color: #77BDE1;
+  border-radius: 2em;
+  border: none;
+  width: 11.5em;
   height: 2em;
-  padding: 0.5em;
+  text-align: center;
+}
+
+#DOB{
+  text-align: center;
+}
+
+.txtBox {
+  width: 11.5em;
+  height: 2em;
+  padding: 0.2em;
 }
 
 .surveyTitle {
