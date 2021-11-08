@@ -2,6 +2,8 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const session = require('express-session');
+const path = require('path');
+const i18n=require("i18n-express");
 const sqlite3 = require('sqlite3');
 const { open } = require('sqlite');
 
@@ -22,7 +24,13 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 } }))
+app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 } }));
+
+app.use(i18n({
+    translationsPath: path.join(__dirname, 'i18n'),
+    siteLangs: ["en","zu"],
+    textsVarName: 'translation'
+  }));
 
 open({
     filename: './patient_database.db',
