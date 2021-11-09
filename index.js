@@ -29,7 +29,10 @@ app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 } }));
 app.use(i18n({
     translationsPath: path.join(__dirname, 'i18n'),
     siteLangs: ["en","zu"],
-    textsVarName: 'translation'
+    siteLangs: ["en","xh"],
+    siteLangs: ["en","af"],  
+    siteLangs: ["en","nso"],
+    textsVarName: 'translation' 
   }));
 
 open({
