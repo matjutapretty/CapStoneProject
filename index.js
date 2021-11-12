@@ -130,6 +130,7 @@ open({
     });
 
     app.get('/followUp', function (req, res) {
+        // res.sendFile(path.join(__dirname+'/test2.html'));
         res.render('followUp', {
             layouts: 'main',
         });
