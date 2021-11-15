@@ -1,23 +1,4 @@
-﻿/**
- * ApiMedic.com Sample Avatar, a demo implementation of the ApiMedic.com Symptom Checker by priaid Inc, Switzerland
- * 
- * Copyright (C) 2012 priaid inc, Switzerland
- * 
- * This file is part of The Sample Avatar.
- * 
- * This is free implementation: you can redistribute it and/or modify it under the terms of the
- * GNU General Public License Version 3 as published by the Free Software Foundation.
- * 
- * The ApiMedic.com Sample Avatar is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
- * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * 
- * See the GNU General Public License for more details. You should have received a copy of the GNU
- * General Public License along with ApiMedic.com. If not, see <http://www.gnu.org/licenses/>.
- * 
- * Authors: priaid inc, Switzerland
- */
-
-var keys = [
+﻿var keys = [
     "litTermsOfUsePolicyPrivacy",//disclaimerText
     "litDisclaimerNotChecked",//disclaimerNotAcceptedText
     "litAddAdditionalComplaints",//noSelectedSymptomsText
@@ -71,8 +52,6 @@ var litTermsOfUse = "";
 var litPrivacyPolicy = "";
 var resObj = {};
 
-
-
 /////////////////////////////Optional parameters//////////////////////////////////
 
 /// Path to priaid webservice
@@ -85,7 +64,7 @@ var currentPlatform = "webservices";
 var language = "en-gb";
 
 /// Security token for webservice access
-var token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InN1ZGFyc2hhbnZpdHRhbEBnbWFpbC5jb20iLCJyb2xlIjoiVXNlciIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL3NpZCI6Ijk4NzkiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3ZlcnNpb24iOiIyMDAiLCJodHRwOi8vZXhhbXBsZS5vcmcvY2xhaW1zL2xpbWl0IjoiOTk5OTk5OTk5IiwiaHR0cDovL2V4YW1wbGUub3JnL2NsYWltcy9tZW1iZXJzaGlwIjoiUHJlbWl1bSIsImh0dHA6Ly9leGFtcGxlLm9yZy9jbGFpbXMvbGFuZ3VhZ2UiOiJlbi1nYiIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvZXhwaXJhdGlvbiI6IjIwOTktMTItMzEiLCJodHRwOi8vZXhhbXBsZS5vcmcvY2xhaW1zL21lbWJlcnNoaXBzdGFydCI6IjIwMjEtMTEtMDgiLCJpc3MiOiJodHRwczovL3NhbmRib3gtYXV0aHNlcnZpY2UucHJpYWlkLmNoIiwiYXVkIjoiaHR0cHM6Ly9oZWFsdGhzZXJ2aWNlLnByaWFpZC5jaCIsImV4cCI6MTYzNjY0MDI4MiwibmJmIjoxNjM2NjMzMDgyfQ.lPfaNEJ4BDps_DVVvv1DMGtpaTegisq3DY7ocIldklM";
+var token = "";
 
 /// Specialisation search url
 var specUrl = "/specialisation";
@@ -162,7 +141,7 @@ var mode = "diagnosis";
     var _edgeYears = n - 11;
 
     var _statusLinkBorderColor = "cccccc";
-    var pathToImages = "/symptom_selector/images";
+    var pathToImages = "/DOC_Product/symptom_selector/images";
     var symptomListId = "symptomList";
     var _diagnosisListId = "diagnosisList";
 
