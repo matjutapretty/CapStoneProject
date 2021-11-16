@@ -192,14 +192,15 @@ p {
 .btn {
   display: inline-block;
   margin: auto;
-  border-radius: 2em;
+  border-radius: 10px;
   border: 1pt solid #5095B6;
-  padding: 5px 10px;
+  padding: 10px 15px;
   background-color: #5095B6;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-size: 12pt;
+  font-size: 22pt;
   font-weight: bold;
   text-align: center;
+  text-decoration: none;
 }
 
 .btn:active {
@@ -257,7 +258,6 @@ input[type='radio']:after {
 #logMessage{
   color: red;
 }
-
 
 @media only screen and (min-width: 33.75em) {  /* 540px */
   .container {
