@@ -377,6 +377,10 @@ table.container-table {
     width:50%;
 }
 
+.height{
+  height: 450px;
+}
+
 span.twitter-typeahead .tt-dropdown-menu {
   position: absolute;
   top: 100%;

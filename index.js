@@ -212,8 +212,13 @@ open({
     });
 
     app.get('/medication', function (req, res) {
-
         res.render('med', {
+            layouts: 'main',
+        });
+    });
+
+    app.get('/test', function (req, res) {
+        res.render('test', {
             layouts: 'main',
         });
     });
