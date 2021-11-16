@@ -209,6 +209,7 @@ p {
 
 .btn:hover {
   cursor: pointer;
+  background-color: rgba(92, 152, 180, 0.856);
 }
 
 input::-webkit-outer-spin-button,

@@ -3,9 +3,11 @@ const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const path = require('path');
-const i18n=require("i18n-express");
+const i18n = require("i18n-express");
 const sqlite3 = require('sqlite3');
 const { open } = require('sqlite');
+const { google } = require('googleapis');
+require('dotenv').config();
 
 const app = express();
 
@@ -28,9 +30,101 @@ app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 } }));
 
 app.use(i18n({
     translationsPath: path.join(__dirname, 'i18n'),
-    siteLangs: ["en","zu","af","xh","nso"],
-    textsVarName: 'translation' 
-  }));
+    siteLangs: ["en", "zu", "af", "xh", "nso"],
+    textsVarName: 'translation'
+}));
+
+// Provide the required configuration
+const CREDENTIALS = JSON.parse(process.env.CREDENTIALS);
+const calendarId = process.env.CALENDAR_ID;
+
+// Google calendar API settings
+const SCOPES = 'https://www.googleapis.com/auth/calendar';
+const calendar = google.calendar({ version: "v3" });
+
+const auth = new google.auth.JWT(
+    CREDENTIALS.client_email,
+    null,
+    CREDENTIALS.private_key,
+    SCOPES
+);
+
+const TIMEOFFSET = '+02:00';
+
+// Get date-time string for calender
+const dateTimeForCalander = () => {
+
+    let date = new Date();
+
+    let year = date.getFullYear();
+    let month = date.getMonth() + 1;
+    if (month < 10) {
+        month = `0${month}`;
+    }
+    let day = date.getDate();
+    if (day < 10) {
+        day = `0${day}`;
+    }
+    let hour = date.getHours();
+    if (hour < 10) {
+        hour = `0${hour}`;
+    }
+    let minute = date.getMinutes();
+    if (minute < 10) {
+        minute = `0${minute}`;
+    }
+
+    let newDateTime = `${year}-${month}-${day}T${hour}:${minute}:00.000${TIMEOFFSET}`;
+
+    let event = new Date(Date.parse(newDateTime));
+
+    let startDate = event;
+    // Delay in end time is 1
+    let endDate = new Date(new Date(startDate).setHours(startDate.getHours() + 1));
+
+    return {
+        'start': startDate,
+        'end': endDate
+    }
+};
+
+// Insert new event to Google Calendar
+const insertEvent = async (event) => {
+
+    try {
+        let response = await calendar.events.insert({
+            auth: auth,
+            calendarId: calendarId,
+            resource: event
+        });
+
+        if (response['status'] == 200 && response['statusText'] === 'OK') {
+            return 1;
+        } else {
+            return 0;
+        }
+    } catch (error) {
+        console.log(`Error at insertEvent --> ${error}`);
+        return 0;
+    }
+};
+
+let dateTime = dateTimeForCalander();
+
+// Event for Google Calendar
+let event = {
+    'summary': `This is the test summary.`,
+    'description': `This is the description.`,
+    'start': {
+        'dateTime': dateTime['start'],
+        'timeZone': 'Africa/Johannesburg'
+    },
+    'end': {
+        'dateTime': dateTime['end'],
+        'timeZone': 'Africa/Johannesburg'
+    }
+};
+
 
 open({
     filename: './patient_database.db',
@@ -77,7 +171,7 @@ open({
                     res.redirect('/login');
                 }
             });
-        
+
     });
 
     app.get('/register', function (req, res) {
@@ -118,6 +212,7 @@ open({
     });
 
     app.get('/medication', function (req, res) {
+
         res.render('med', {
             layouts: 'main',
         });
@@ -127,9 +222,11 @@ open({
         res.render('new_appoint', {
             layouts: 'main',
         });
+        // res.sendFile(path.join(__dirname+'/calender.html'));
     });
 
     app.get('/followUp', function (req, res) {
+        // res.sendFile(path.join(__dirname+'/test2.html'));
         res.render('followUp', {
             layouts: 'main',
         });

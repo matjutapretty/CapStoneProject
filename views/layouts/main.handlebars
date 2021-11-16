@@ -5,9 +5,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>PSMS</title>
+
     <link rel="shortcut icon" href="/PSMSLogo2.png" type="image/png">
-    <link rel="stylesheet" href="/simple-grid.css">
+    <link rel="stylesheet" type="text/css" href="/simple-grid.css" />
+    <link rel="stylesheet" type="text/css" href="/DOC_Product/symptom_selector/selector.css" />
+    <link rel="stylesheet" type="text/css" href="/DOC_Product/symptom_selector/fontawesome/assets/css/font-awesome.min.css" />
+    <link href='/fullcalendar/main.css' rel='stylesheet' />
+    <link href='/fullcalendar/main.min.css' rel='stylesheet' />
+
+    <script src="/DOC_Product/libs/jquery-1.12.2.min.js"></script>
+    <script src="/DOC_Product/libs/json2.js"></script>
+    <script src="/DOC_Product/libs/jquery.imagemapster.min.js?v=1.1"></script>
+    <script src="/DOC_Product/libs/typeahead.bundle.js"></script>
+    <script src="/DOC_Product/symptom_selector/selector.js?v=3.3"></script>
+    <script src="/DOC_Product/symptom_selector/symptomDOM.js"></script>
+    <script src="/fullcalendar/main.js"></script>
+    <script src="/fullcalendar/main.min.js"></script>
+    <script src="/fullcalendar/calDOM.js"></script>
 </head>
 
 <body>
@@ -17,6 +33,7 @@
                 <img src="/PSMSLogo.png" alt="PSMS Logo" width="200" height="100">
             </div>
             <div class="col-6 right">
+<<<<<<< HEAD
                 <h3>Language Preference:</h3>
                 <ul>
                     <li><a href="/?clang=zu">IsiZulu</a></li>
@@ -40,6 +57,18 @@
 
 
 
+=======
+                <div class="dropdown">
+                    <button class="btn">{{translation.LanguagePreference}}</button>
+                    <div class="dropdown-content">
+                        <a href="/?clang=af">Afrikaans</a>
+                        <a href="/?clang=en">English</a>
+                        <a href="/?clang=xh">IsiXhosa</a>
+                        <a href="/?clang=zu">IsiZulu</a>
+                        <a href="/?clang=nso">Northern Sotho</a>
+                    </div>
+                </div>
+>>>>>>> 16f0e70f49741a6a7661a517be1d480c349dee1a
             </div>
         </div>
         {{{body}}}
