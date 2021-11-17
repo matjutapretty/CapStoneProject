@@ -64,10 +64,10 @@ var currentPlatform = "webservices";
 var language = "en-gb";
 
 /// Security token for webservice access
-var token = "";
+var token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InN1ZGFyc2hhbnZpdHRhbEBnbWFpbC5jb20iLCJyb2xlIjoiVXNlciIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL3NpZCI6Ijk4NzkiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3ZlcnNpb24iOiIyMDAiLCJodHRwOi8vZXhhbXBsZS5vcmcvY2xhaW1zL2xpbWl0IjoiOTk5OTk5OTk5IiwiaHR0cDovL2V4YW1wbGUub3JnL2NsYWltcy9tZW1iZXJzaGlwIjoiUHJlbWl1bSIsImh0dHA6Ly9leGFtcGxlLm9yZy9jbGFpbXMvbGFuZ3VhZ2UiOiJlbi1nYiIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvZXhwaXJhdGlvbiI6IjIwOTktMTItMzEiLCJodHRwOi8vZXhhbXBsZS5vcmcvY2xhaW1zL21lbWJlcnNoaXBzdGFydCI6IjIwMjEtMTEtMDgiLCJpc3MiOiJodHRwczovL3NhbmRib3gtYXV0aHNlcnZpY2UucHJpYWlkLmNoIiwiYXVkIjoiaHR0cHM6Ly9oZWFsdGhzZXJ2aWNlLnByaWFpZC5jaCIsImV4cCI6MTYzNzE2NTE4MCwibmJmIjoxNjM3MTU3OTgwfQ.zsdW20xvqlbZkUS86nHd5qF-54e67Q7fP-8aTbvDPzo";
 
 /// Specialisation search url
-var specUrl = "/specialisation";
+var specUrl = "sampleSpecialisationPage";
 
 /// Include always all specialisations for custom urls
 var includeAllSpec = false;
@@ -95,28 +95,28 @@ var mode = "diagnosis";
     var _plugin;
 
     var selectorStatus =
-        {
-            Man: "Man",
-            Woman: "Woman",
-            Boy: "Boy",
-            Girl: "Girl"
-        };
+    {
+        Man: "Man",
+        Woman: "Woman",
+        Boy: "Boy",
+        Girl: "Girl"
+    };
 
     var Gender =
-        {
-            Male: "Male",
-            Female: "Female"
-        };
+    {
+        Male: "Male",
+        Female: "Female"
+    };
 
     var SymptomsLocations =
-        {
-            Head: 6,
-            Chest: 15,
-            Arms: 7,
-            Legs: 10,
-            Hips: 16,
-            Skin: 17
-        };
+    {
+        Head: 6,
+        Chest: 15,
+        Arms: 7,
+        Legs: 10,
+        Hips: 16,
+        Skin: 17
+    };
 
     var _childAvatar;
     var _womanAvatar;
@@ -150,42 +150,9 @@ var mode = "diagnosis";
     var methods = {
 
         init: function (options) {
-
             return this.each(function () {
                 _plugin = $(this);
-                pathToWebservice = options.webservice;
-                language = options.language;
-                token = options.accessToken;
-
-                if (options.specUrl) {
-                    specUrl = options.specUrl;
-                }
-
-                if (options.includeAllSpec)
-                    includeAllSpec = options.includeAllSpec;
-
-                if (options.platform)
-                    currentPlatform = options.platform;
-
-                if (options.redirectUrl) {
-                    setCookie("selectedBodyPart", "", -1);
-                    redirectUrl = options.redirectUrl;
-                }
-
-                if (options.termsUrl) {
-                    termsUrl = options.termsUrl;
-                }
-
-                if (options.privacyUrl) {
-                    privacyUrl = options.privacyUrl;
-                }
-
-                if (options.mode) {
-                    mode = options.mode;
-                }
-
                 _ajaxGetSpecificResources();
-
             });
         },
         Resize: function (options) {
@@ -214,15 +181,8 @@ var mode = "diagnosis";
         }
     };
 
-    $.fn.symptomSelector = function (method) {
-        if (methods[method]) {
-            return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
-        } else if (typeof method === 'object' || !method) {
-            return methods.init.apply(this, arguments);
-        } else {
-            $.error('Method ' + method + ' does not exist on jQuery.symptomSelector');
-        }
-
+    $.fn.symptomSelector = function () {
+        return methods.init.apply(this, arguments)
     };
 
     //////////////////ajax calls//////////////////////////////////////////
@@ -232,12 +192,12 @@ var mode = "diagnosis";
             url: pathToWebservice + "/symptoms/0/" + _selectedSelectorStatus,
             type: "GET",
             data:
-                {
-                    token: token,
-                    format: "json",
-                    language: language,
-                    platform: currentPlatform
-                },
+            {
+                token: token,
+                format: "json",
+                language: language,
+                platform: currentPlatform
+            },
             contentType: "application/json; charset=utf-8",
             cache: false,
             async: false,
@@ -264,12 +224,12 @@ var mode = "diagnosis";
             url: pathToWebservice + "/specificresources",
             type: "GET",
             data:
-                {
-                    keys: JSON.stringify(keys),
-                    token: token,
-                    format: "json",
-                    language: language
-                },
+            {
+                keys: JSON.stringify(keys),
+                token: token,
+                format: "json",
+                language: language
+            },
             async: false,
             contentType: "application/json; charset=utf-8",
             cache: false,
@@ -630,12 +590,12 @@ var mode = "diagnosis";
         });
 
         skinLink.hover(
-        function () {
-            $(this).find(".skin-image").attr("src", pathToImages + "/skin-joint-general-bw-hellgrau-smallhover.png");
-        },
-        function () {
-            $(this).find(".skin-image").attr("src", pathToImages + "/skin-joint-general-bw-hellgrau-small.png");
-        });
+            function () {
+                $(this).find(".skin-image").attr("src", pathToImages + "/skin-joint-general-bw-hellgrau-smallhover.png");
+            },
+            function () {
+                $(this).find(".skin-image").attr("src", pathToImages + "/skin-joint-general-bw-hellgrau-small.png");
+            });
 
         skinLink.append(skinImage);
         skinLink.append(skin_Text);
@@ -794,7 +754,7 @@ var mode = "diagnosis";
         var d = new Date();
         var n = parseInt(d.getFullYear());
 
-        for (var i = n; i > (n - 100) ; i--) {
+        for (var i = n; i > (n - 100); i--) {
             var opt = jQuery("<option/>", {
                 "text": i,
                 "value": i
@@ -1019,10 +979,6 @@ var mode = "diagnosis";
     }
 
     function _makeDiagnosis() {
-        if (mode == "booking")
-            return;
-
-        if (isDisclaimerChecked()) {
             var options = new Object();
 
             options.Symptoms = _symptomList.symptomList("GetSelectedSymptoms");
@@ -1035,7 +991,6 @@ var mode = "diagnosis";
                 $("#" + _diagnosisListId).specialisations("GetSpecialisations", options);
 
             _symptomList.symptomList("LoadProposedSymptoms", options);
-        }
 
     }
 
@@ -1094,12 +1049,12 @@ var mode = "diagnosis";
             highlight: true,
             minLength: 2
         },
-        {
-            name: '_symptoms',
-            displayKey: 'value',
+            {
+                name: '_symptoms',
+                displayKey: 'value',
 
-            source: substringMatcher(_symptomList.symptomList("GetValidSymptoms"))
-        }
+                source: substringMatcher(_symptomList.symptomList("GetValidSymptoms"))
+            }
         ).bind("typeahead:selected", function (obj, datum, name) {
             var result = $.grep(_symptomList.symptomList("GetValidSymptoms"), function (e) { return e.Name == datum.value; });
             var options = new Object();
@@ -1298,11 +1253,11 @@ var mode = "diagnosis";
             url: pathToWebservice + "/body/locations",
             type: "GET",
             data:
-                {
-                    token: token,
-                    format: "json",
-                    language: language
-                },
+            {
+                token: token,
+                format: "json",
+                language: language
+            },
             contentType: "application/json; charset=utf-8",
             cache: false,
             dataType: "jsonp",
@@ -1324,11 +1279,11 @@ var mode = "diagnosis";
             url: pathToWebservice + "/body/locations/" + locationId,
             type: "GET",
             data:
-                {
-                    token: token,
-                    format: "json",
-                    language: language
-                },
+            {
+                token: token,
+                format: "json",
+                language: language
+            },
             contentType: "application/json; charset=utf-8",
             cache: false,
             dataType: "jsonp",
@@ -1353,15 +1308,15 @@ var mode = "diagnosis";
             type: "GET",
             async: true,
             data:
-                {
-                    token: token,
-                    format: "json",
-                    language: language,
-                    symptoms: JSON.stringify(symptoms),
-                    gender: gender,
-                    year_of_birth: year_of_birth,
-                    platform: currentPlatform
-                },
+            {
+                token: token,
+                format: "json",
+                language: language,
+                symptoms: JSON.stringify(symptoms),
+                gender: gender,
+                year_of_birth: year_of_birth,
+                platform: currentPlatform
+            },
             contentType: "application/json; charset=utf-8",
             cache: false,
             dataType: "jsonp",
@@ -1386,12 +1341,12 @@ var mode = "diagnosis";
             type: "GET",
             async: true,
             data:
-                {
-                    token: token,
-                    format: "json",
-                    language: language,
-                    symptomId: symptomId
-                },
+            {
+                token: token,
+                format: "json",
+                language: language,
+                symptomId: symptomId
+            },
             contentType: "application/json; charset=utf-8",
             cache: false,
             dataType: "jsonp",
@@ -1438,8 +1393,6 @@ var mode = "diagnosis";
 
         _selectedList.append(jQuery("<ul/>", { "class": "selected_list" }));
         _selectedList.append(_createNoSymptomsSelectedMessage());
-        _selectedList.append(_createTermsElement());
-        _selectedList.append(_createTermsNotAcceptedMessage());
         _selectedList.append(_proposedListHeader);
         _selectedList.append(_proposedList);
 
@@ -1706,10 +1659,6 @@ var mode = "diagnosis";
         });
 
         btnGenerateDiagnosis.bind('click', function () {
-            if (!isDisclaimerChecked()) {
-                _selectedList.find("#termsNotAcceptedMessage").show();
-                return;
-            }
             _makeDiagnosis();
         });
 
@@ -1718,13 +1667,8 @@ var mode = "diagnosis";
 
     function _makeDiagnosis() {
         _avatarOptions.Symptoms = _getSelectedSymptoms();
-
-        if (isDisclaimerChecked()) {
-            if (mode == "diagnosis")
-                $("#" + _diagnosisListId).diagnosis("GetDiagnosis", _avatarOptions);
-
-            if (mode == "specialisations")
-                $("#" + _diagnosisListId).specialisations("GetSpecialisations", _avatarOptions);
+        if (mode == "diagnosis"){
+            $("#" + _diagnosisListId).diagnosis("GetDiagnosis", _avatarOptions);
         }
 
         if (_avatarOptions.Symptoms.length > 0) {
@@ -1759,75 +1703,13 @@ var mode = "diagnosis";
         return p;
     }
 
-    function _createTermsElement() {
-        if (mode == "booking") {
-            var p = jQuery("<p/>");
-            return p;
-        }
-
-        var p = jQuery("<span/>", {
-            id: "terms",
-            "class": "message info"
-        });
-        var checked = isDisclaimerChecked();
-        var chkBoxTerms = jQuery("<input/>", {
-            "type": "checkbox",
-            "checked": checked,
-            "class": "terms-checkbox"
-        });
-
-        chkBoxTerms.bind('click', function () {
-            if (this.checked) {
-                setCookie("diagnosisDisclaimer", "true", 0.1);
-                _selectedList.find("#termsNotAcceptedMessage").hide();
-            }
-            else {
-                setCookie("diagnosisDisclaimer", "false", -1);
-            }
-            isDisclaimerChecked();
-        });
-
-        // set privacy and terms links
-        //disclaimerText = disclaimerText.replace(litTermsOfUse, "<a href='" + termsUrl + "' download='" + termsUrl + "' class='terms' target='_blank'>" + litTermsOfUse + "</a>").replace(litPrivacyPolicy, "<a href='" + privacyUrl + "' download='" + privacyUrl + "' class='terms' target='_blank'>" + litPrivacyPolicy + "</a>");
-        var litTermsOfUseInText = '#' + litTermsOfUse.replace(/ /g, '').toLowerCase() + '#';
-        var litPrivacyPolicyInText = '#' + litPrivacyPolicy.replace(/ /g, '').toLowerCase() + '#';
-        disclaimerText = disclaimerText.replace(litTermsOfUseInText, "<a href='" + termsUrl + "' class='terms' target='_blank' >" + litTermsOfUse + "</a>").replace(litPrivacyPolicyInText, "<a href='" + privacyUrl + "' class='terms' target='_blank' >" + litPrivacyPolicy + "</a>");
-
-        var termsText = jQuery("<label/>", {
-        });
-
-        termsText.html(disclaimerText);
-
-        var diagnosisButton = _addGenerateDiagnosisButton();
-
-        p.append(chkBoxTerms);
-        p.append(termsText);
-        p.append("<br/>");
-        p.append(diagnosisButton);
-        p.hide();
-
-        return p;
-    }
-
-    function _createTermsNotAcceptedMessage() {
-        var p = jQuery("<span/>", {
-            "id": "termsNotAcceptedMessage",
-            "class": "message warning",
-            "text": disclaimerNotAcceptedText
-        });
-
-        p.hide();
-        return p;
-    }
 
     function _showTerms() {
         _selectedList.find("#noSymptomsSelectedMessage").hide();
-        _selectedList.find("#terms").show();
         _selectedList.parent().removeClass("box-inactive");
     }
 
     function _hideTerms() {
-        _selectedList.find("#terms").hide();
         _selectedList.find("#noSymptomsSelectedMessage").show();
         _selectedList.parent().addClass("box-inactive");
     }
@@ -1924,31 +1806,6 @@ var mode = "diagnosis";
         _plugin.append(_diagnosisList);
         _plugin.append(_diagnosisMessage);
 
-        _createIssueInfoPage();
-    }
-
-    function _createIssueInfoPage() {
-        _infoPage = jQuery("<div/>", { "class": "info_page" });
-        $("body").append(_infoPage);
-
-        var content = jQuery("<div/>", { "class": "info_page_content" });
-        _infoPage.append(content);
-
-        infoPageLoader = jQuery("<div/>", { "id": "infoPageLoader", "class": "loader" });
-        _infoPage.append(infoPageLoader);
-
-        var btnClose = jQuery("<i/>", { "id": "btnCloseInfo", "class": "fa fa-times btn_info" });
-        btnClose.bind('click', function () {
-            _infoPage.find(".info_page_content").empty();
-            _infoPage.hide();
-        });
-        var btnPrint = jQuery("<i/>", { "id": "btnPrintInfo", "class": "fa fa-print btn_info" });
-        btnPrint.bind('click', function () {
-            _print(content);
-        });
-
-        _infoPage.append(btnClose);
-        _infoPage.append(btnPrint);
     }
 
     function _createDiagnosisElement(diagnosis) {
@@ -1972,50 +1829,6 @@ var mode = "diagnosis";
         }
     }
 
-    function _addIssueInfoCallback(issueInfo) {
-        var htmlContent = "<div>";
-        htmlContent += "<h1 class='margin-none' itemprop=\"name\">" + issueInfo.Name + "</h1>";
-
-        var countSynonyms = 0;
-        if (issueInfo.Synonyms != null && issueInfo.Synonyms !== "") {
-            htmlContent += "<h4>(" + issueInfo.Synonyms + ")</h4>";
-        }
-
-        if (issueInfo.ProfName != null && issueInfo.ProfName !== "") {
-            htmlContent += "<h3 class='border-bottom'><small>" + litProfName + "  (<b itemprop=\"alternateName\">" + issueInfo.ProfName + "</b>)</small></h3>";
-        }
-
-        if (issueInfo.DescriptionShort != null && issueInfo.DescriptionShort != "") {
-            htmlContent += "<h3>" + litShortDescription + "</h3><p class='healthIssueInfo'>" + issueInfo.DescriptionShort + "</p>";
-        }
-
-        if (issueInfo.Description != null && issueInfo.Description != "") {
-            htmlContent += "<h3>" + litDescription + "</h3><p class='healthIssueInfo'>" + issueInfo.Description + "</p>";
-        }
-
-        if (issueInfo.MedicalCondition != null && issueInfo.MedicalCondition != "" && typeof (issueInfo.MedicalCondition) != 'undefined' && issueInfo.MedicalCondition != null) {
-            htmlContent += "<h3>" + litOccurrence + " + " + litSymptom + "</h3><p class='healthIssueInfo'>" + issueInfo.MedicalCondition + "</p>";
-        }
-
-        if (issueInfo.TreatmentDescription != null && issueInfo.TreatmentDescription != "") {
-            htmlContent += "<h3>" + litFollow + " + " + litTreatment + "</h3><p class='healthIssueInfo'>" + issueInfo.TreatmentDescription + "</p>";
-        }
-
-        if (issueInfo.PossibleSymptoms != "" && issueInfo.PossibleSymptoms != null) {
-            htmlContent += "<h3>" + litPossibleSymptoms + "</h3><p class='healthIssueInfo'>" + issueInfo.PossibleSymptoms + "</p>";
-        }
-
-        //TODO: references should be shown properly - this string is comming from Wikipedia !!!! string ret = client.DownloadString(url);
-        htmlContent = htmlContent.replace("Cite error: There are <ref> tags on this page, but the references will not show without a {{reflist}} template (see the help page).", "");
-
-        var windowHeight = $(".container-table").height();
-        _infoPage.css('min-height', windowHeight + 'px');
-
-        _infoPage.find(".info_page_content").append(htmlContent);
-        $("html, body").animate({ scrollTop: 0 }, "fast");
-        $('html, body', window.parent.document).animate({ scrollTop: 100 }, 'fast');
-    }
-
     function _createDiagnosisNameElement(issueId, diagnosisName) {
         var diagnosisListElement = jQuery("<li/>", {
         });
@@ -2024,16 +1837,6 @@ var mode = "diagnosis";
             "text": diagnosisName,
             "class": "header diagnosis_name_header"
         });
-
-        var issueInfo = jQuery("<i/>", {
-            "class": "fa fa-info-circle ic-issue-info"
-        });
-
-        issueInfo.bind('click', function () {
-            _ajaxGetIssueInfo(issueId);
-        });
-
-        diagnosisNameElement.append(issueInfo);
 
         diagnosisListElement.append(diagnosisNameElement);
 
@@ -2079,7 +1882,7 @@ var mode = "diagnosis";
                     //TODO possible implementations:
                     //"href": specUrl + "/" + this.Name + "/" + this.ID
                     //"href": specUrl + "?specId=" + this.SpecialistID
-					"href": specUrl  + "/" + "specId" + this.SpecialistID + ".html"
+                    "href": specUrl + "/" + "specId" + this.SpecialistID + ".html"
                 });
 
                 specListElement.append(spec);
@@ -2121,22 +1924,6 @@ var mode = "diagnosis";
         _diagnosisMessage.show();
     }
 
-    function _print(printSource) {
-        var name = printSource.find("h1").text();
-        var printFooter = "<div style=\"float:right;\"><img src=\"symptom_selector/images/logo.jpg\" alt=\"priaid\" class=\"logo\"><span><a href=\"http://www.priaid.com\" target=\"_blank\" class=\"priaid-powered\"> powered by  </a> </span></div>"
-        printFooter += "<div style=\"float:right;padding-right:16px;clear:both;\"><span><a href=\"http://www.priaid.com\" target=\"_blank\"  class=\"priaid-powered padding0\">(www.priaid.com)</a> </span> </div></div>"
-        var printContent = printSource.clone();
-
-        printContent = printContent.html();
-
-        var popupWin = window.open('', '_blank', 'width=800,height=600');
-        popupWin.document.open();
-        popupWin.document.write("<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"symptom_selector/print.css\"><title=\"priaid -" + name + "></title></head><body onload=\"window.print()\"><div id=\"#container\">" + printContent + printFooter + "</div></html>");
-        //popupWin.document.write(html.join(""));
-        popupWin.document.title = "priaid - " + name;
-        popupWin.document.close();
-    }
-
     //////////////////ajax calls//////////////////////////////////////////
 
     function _ajaxGetDiagnosis(symptoms, gender, year_of_birth) {
@@ -2144,15 +1931,15 @@ var mode = "diagnosis";
             url: pathToWebservice + "/diagnosis",
             type: "GET",
             data:
-                {
-                    token: token,
-                    format: "json",
-                    language: language,
-                    symptoms: JSON.stringify(symptoms),
-                    gender: gender,
-                    year_of_birth: year_of_birth,
-                    platform: currentPlatform
-                },
+            {
+                token: token,
+                format: "json",
+                language: language,
+                symptoms: JSON.stringify(symptoms),
+                gender: gender,
+                year_of_birth: year_of_birth,
+                platform: currentPlatform
+            },
             contentType: "application/json; charset=utf-8",
             cache: false,
             dataType: "jsonp",
@@ -2169,38 +1956,6 @@ var mode = "diagnosis";
                 _loader.hide();
             }
         });
-    }
-
-    function _ajaxGetIssueInfo(issueId) {
-        $.ajax({
-            url: pathToWebservice + "/issues/" + issueId + "/info",
-            type: "GET",
-            data:
-                {
-                    token: token,
-                    format: "json",
-                    language: language,
-                    platform: currentPlatform
-                },
-            contentType: "application/json; charset=utf-8",
-            cache: false,
-            dataType: "jsonp",
-            jsonpCallback: "_addIssueInfoCallback",
-            success: function (responseData) { _addIssueInfoCallback(responseData); },
-            beforeSend: function (jqXHR, settings) {
-                _infoPage.find("#infoPageLoader").show();
-                _infoPage.show();
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                if (window.console)
-                    console.log(xhr.responseText);
-            },
-            complete: function () {
-                _infoPage.find("#infoPageLoader").hide();
-            }
-        });
-
-
     }
 
     //////////////////end ajax calls//////////////////////////////////////////
@@ -2355,15 +2110,15 @@ var mode = "diagnosis";
             url: pathToWebservice + "/diagnosis/specialisations",
             type: "GET",
             data:
-                {
-                    token: token,
-                    format: "json",
-                    language: language,
-                    symptoms: JSON.stringify(symptoms),
-                    gender: gender,
-                    year_of_birth: year_of_birth,
-                    platform: currentPlatform
-                },
+            {
+                token: token,
+                format: "json",
+                language: language,
+                symptoms: JSON.stringify(symptoms),
+                gender: gender,
+                year_of_birth: year_of_birth,
+                platform: currentPlatform
+            },
             contentType: "application/json; charset=utf-8",
             cache: false,
             dataType: "jsonp",
@@ -2408,11 +2163,6 @@ function getCookie(cname) {
         if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
     }
     return "";
-}
-
-function isDisclaimerChecked() {
-    var isChecked = getCookie("diagnosisDisclaimer");
-    return isChecked !== "" ? isChecked : false;
 }
 
 
