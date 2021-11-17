@@ -7,7 +7,7 @@ const i18n = require("i18n-express");
 const sqlite3 = require('sqlite3');
 const { open } = require('sqlite');
 const { google } = require('googleapis');
-require('dotenv').config();
+const config = require('./APIKEY');
 
 const app = express();
 
@@ -35,8 +35,8 @@ app.use(i18n({
 }));
 
 // Provide the required configuration
-const CREDENTIALS = JSON.parse(process.env.CREDENTIALS);
-const calendarId = process.env.CALENDAR_ID;
+const CREDENTIALS = config.CREDENTIALS
+const calendarId = config.CALENDAR_ID;
 
 // Google calendar API settings
 const SCOPES = 'https://www.googleapis.com/auth/calendar';
