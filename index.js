@@ -188,16 +188,15 @@ open({
     });
 
     app.post('/register', async function (req, res) {
-        if (req.body.register == 'true') {
             let register = 'INSERT INTO patient_login(Firstname, Lastname, DOB, Gender, IDno, ConNo, Email, LangPref, Pwd) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
 
             await db.run(register, req.body.firstName, req.body.lastName, req.body.DOB, req.body.gender, req.body.IDno, req.body.cellNo, req.body.email, req.body.language, req.body.password);
 
             res.redirect('/login');
-        } else if(req.body.back == 'true'){
-            res.redirect('/');
-        }
-    
+    });
+
+    app.post('/back', async function (req, res) {
+        res.redirect('/');
     });
 
     app.get('/service', function (req, res) {
