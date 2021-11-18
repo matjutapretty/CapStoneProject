@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', function () {
     today = yyyy + '-' + mm + '-' + dd;
 
     let calendar = new FullCalendar.Calendar(calendarEl, {
+        handleWindowResize: true,
+        height: 'auto',
         initialView: 'timeGridWeek',
         headerToolbar: {
             left: 'prev,next today',
@@ -20,8 +22,34 @@ document.addEventListener('DOMContentLoaded', function () {
             googleCalendarId: 'ii560j119ive7dpsadvnm0mv4g@group.calendar.google.com'
         },
         initialDate: today,
+        allDaySlot: false,
+        slotMinTime: '08:00:00',
+        slotMaxTime: '16:00:00',
+        slotDuration: '00:20',
+        slotLabelInterval: '00:20',
+        slotLabelFormat: {
+            hour: '2-digit',
+            minute: '2-digit',
+            omitZeroMinute: false,
+            meridiem: 'short'
+        },
+        hiddenDays: [ 0 ],
+        businessHours: [
+            {
+                daysOfWeek: [1, 2, 3, 4, 5],
+                startTime: '08:00',
+                endTime: '16:00'
+            },
+            {
+                daysOfWeek: [6],
+                startTime: '8:00',
+                endTime: '12:00'
+            }
+        ],
+        nowIndicator: true,
         navLinks: true,
         selectable: true,
+        selectConstraint: 'businessHours',
         selectMirror: true,
         select: function (arg) {
             var title = prompt('Event Title:');
@@ -30,7 +58,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     title: title,
                     start: arg.start,
                     end: arg.end,
-                    allDay: arg.allDay
                 })
             }
             calendar.unselect()
@@ -41,7 +68,8 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         },
         editable: true,
-        dayMaxEvents: true
+        selectOverlap: false,
+        dayMaxEvents: false
     });
     calendar.render();
 });

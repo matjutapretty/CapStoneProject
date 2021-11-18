@@ -1,3 +1,6 @@
+const reqToken = require("./public/getToken");
+let token = reqToken.reqToken;
+
 module.exports = {
     CREDENTIALS: { 
         type : "service_account", 
@@ -10,5 +13,6 @@ module.exports = {
         token_uri : "https://oauth2.googleapis.com/token", 
         auth_provider_x509_cert_url : "https://www.googleapis.com/oauth2/v1/certs", 
         client_x509_cert_url : "https://www.googleapis.com/robot/v1/metadata/x509/psms-754%40psms-332210.iamgserviceaccount.com" },
-    CALENDAR_ID: 'ii560j119ive7dpsadvnm0mv4g@group.calendar.google.com'
+    CALENDAR_ID: 'ii560j119ive7dpsadvnm0mv4g@group.calendar.google.com',
+    TOKEN: token
 }
