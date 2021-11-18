@@ -7,6 +7,7 @@ const i18n = require("i18n-express");
 const sqlite3 = require('sqlite3');
 const { open } = require('sqlite');
 const { google } = require('googleapis');
+const cookieParser = require('cookie-parser');
 const config = require('./APIKEY');
 
 const app = express();
@@ -22,6 +23,7 @@ app.set('view engine', 'handlebars');
 
 app.use(express.static('public'));
 //app.use("/public", express.static('public'));
+app.use(cookieParser());
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -227,11 +229,10 @@ open({
         res.render('new_appoint', {
             layouts: 'main',
         });
-        // res.sendFile(path.join(__dirname+'/calender.html'));
     });
 
     app.get('/followUp', function (req, res) {
-        // res.sendFile(path.join(__dirname+'/test2.html'));
+        res.cookie('Token', config.TOKEN._W);
         res.render('followUp', {
             layouts: 'main',
         });
