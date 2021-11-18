@@ -157,22 +157,27 @@ open({
     });
 
     app.post('/login', async function (req, res) {
-        req.session.username = '';
-        req.session.password = '';
 
-        await db.all('SELECT * FROM patient_login WHERE IDno = ? AND Pwd = ?', req.body.username, req.body.password)
-            .then(function (patient_login) {
-                if (patient_login.length != 0) {
-                    req.session.username = patient_login[0].IDno;
-                    req.session.password = patient_login[0].Pwd;
-                    res.redirect('/service');
-                } else {
-                    req.session.username = ' ';
-                    req.session.password = ' ';
-                    req.session.message = "Incorrect Username or Password"
-                    res.redirect('/login');
-                }
-            });
+        if (req.body.login == 'true') {
+            req.session.username = '';
+            req.session.password = '';
+
+            await db.all('SELECT * FROM patient_login WHERE IDno = ? AND Pwd = ?', req.body.username, req.body.password)
+                .then(function (patient_login) {
+                    if (patient_login.length != 0) {
+                        req.session.username = patient_login[0].IDno;
+                        req.session.password = patient_login[0].Pwd;
+                        res.redirect('/service');
+                    } else {
+                        req.session.username = ' ';
+                        req.session.password = ' ';
+                        req.session.message = ' ';
+                        res.redirect('/login');
+                    }
+                });
+        } else if (req.body.back == 'true') {
+            res.redirect('/');
+        }
 
     });
 
@@ -183,22 +188,16 @@ open({
     });
 
     app.post('/register', async function (req, res) {
-        let register = 'INSERT INTO patient_login(Firstname, Lastname, DOB, Gender, IDno, ConNo, Email, LangPref, Pwd) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
+        if (req.body.register == 'true') {
+            let register = 'INSERT INTO patient_login(Firstname, Lastname, DOB, Gender, IDno, ConNo, Email, LangPref, Pwd) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
 
-        await db.run(register, req.body.firstName, req.body.lastName, req.body.DOB, req.body.gender, req.body.IDno, req.body.cellNo, req.body.email, req.body.language, req.body.password);
+            await db.run(register, req.body.firstName, req.body.lastName, req.body.DOB, req.body.gender, req.body.IDno, req.body.cellNo, req.body.email, req.body.language, req.body.password);
 
-        console.log(
-            "First Name: " + req.body.firstName + "\n" +
-            "Last Name: " + req.body.lastName + "\n" +
-            "DOB: " + req.body.DOB + "\n" +
-            "Gender: " + req.body.gender + "\n" +
-            "ID No:" + req.body.IDno + "\n" +
-            "Cell: " + req.body.cellNo + "\n" +
-            "Email: " + req.body.email + "\n" +
-            "Lang: " + req.body.language + "\n" +
-            "PWD: " + req.body.password
-        )
-        res.redirect('/login');
+            res.redirect('/login');
+        } else if(req.body.back == 'true'){
+            res.redirect('/');
+        }
+    
     });
 
     app.get('/service', function (req, res) {

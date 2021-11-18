@@ -362,4 +362,8 @@ input[type='radio']:after {
   }
 }
 
+.hidden {
+  display: none;
+}
+
 

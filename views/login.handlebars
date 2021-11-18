@@ -1,7 +1,7 @@
 <form action="/login" method="post">
 
     <div class="row">
-        <div class="col-12 center"><h4 id="logMessage">{{login_Message}}</h4></div>
+        <div class="col-12 center"><h4 id="logMessage" class={{#if login_Message}}{{login_Message}}{{else}}hidden{{/if}}>{{translation.IncorrectUsernameorPassword}}</h4></div>
     </div>
 
     <div class="row">
@@ -16,11 +16,11 @@
 
     <div class="row">
         <div class="col-6 right">
-            <button class="btn" type="submit">{{translation.Login}}</button>
+            <button class="btn" type="submit" name="login" value="true">{{translation.Login}}</button>
         </div>
         
         <div class="col-6 left">
-            <button class="btn" type="submit">{{translation.Back}}</button>
+            <button class="btn" type="submit" name="back" value="true">{{translation.Back}}</button>
         </div>
     </div>
     </div>
