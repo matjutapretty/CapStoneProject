@@ -19,5 +19,6 @@
 "Medication" : "Medication",
 "NewAppointment" : "New Appointment",
 "FollowUp" : "Follow Up",
-"IncorrectUsernameorPassword" : "Incorrect Username or Password" 
+"IncorrectUsernameorPassword" : "Incorrect Username or Password",
+"Back" : "Back"
 }
