@@ -183,6 +183,11 @@ p {
   display: none;
 }
 
+#PSMSLogo {
+  width: 110%;
+  height: 110%
+}
+
 #mainBtn {
   position: absolute;
   bottom: 50%;
@@ -294,14 +299,131 @@ input[type='radio']:after {
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {display: block;}
 
+@media only screen and (min-width: 20em) {  /* 320px */
+  #PSMSLogo {
+    width: 310%;
+    height: 310%
+  }
 
-@media only screen and (min-width: 33.75em) {  /* 540px */
   .container {
-    width: 80%;
+    width: 70%;
+  }
+
+  .col-1 {
+    width: 4.33%;
+  }
+
+  .col-2 {
+    width: 12.66%;
+  }
+
+  .col-3 {
+    width: 21%;
+  }
+
+  .col-4 {
+    width: 29.33%;
+  }
+
+  .col-5 {
+    width: 37.66%;
+  }
+
+  .col-6 {
+    width: 46%;
+  }
+
+  .col-7 {
+    width: 54.33%;
+  }
+
+  .col-8 {
+    width: 62.66%;
+  }
+
+  .col-9 {
+    width: 71%;
+  }
+
+  .col-10 {
+    width: 79.33%;
+  }
+
+  .col-11 {
+    width: 87.66%;
+  }
+
+  .col-12 {
+    width: 96%;
   }
 }
 
+@media only screen and (min-width: 33.75em) {  /* 540px */
+  #PSMSLogo {
+    width: 210%;
+    height: 210%
+  }
+
+  .container {
+    width: 80%;
+  }
+
+  .col-1 {
+    width: 4.33%;
+  }
+
+  .col-2 {
+    width: 12.66%;
+  }
+
+  .col-3 {
+    width: 21%;
+  }
+
+  .col-4 {
+    width: 29.33%;
+  }
+
+  .col-5 {
+    width: 37.66%;
+  }
+
+  .col-6 {
+    width: 46%;
+  }
+
+  .col-7 {
+    width: 54.33%;
+  }
+
+  .col-8 {
+    width: 62.66%;
+  }
+
+  .col-9 {
+    width: 71%;
+  }
+
+  .col-10 {
+    width: 79.33%;
+  }
+
+  .col-11 {
+    width: 87.66%;
+  }
+
+  .col-12 {
+    width: 96%;
+  }
+
+}
+
 @media only screen and (min-width: 45em) {  /* 720px */
+  #PSMSLogo {
+    width: 110%;
+    height: 110%
+  }
+
   .col-1 {
     width: 4.33%;
   }
@@ -353,7 +475,7 @@ input[type='radio']:after {
   .hidden-sm {
     display: block;
   }
-}
+} 
 
 @media only screen and (min-width: 60em) { /* 960px */
   .container {
