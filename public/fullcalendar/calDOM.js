@@ -1,3 +1,13 @@
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = $.trim(ca[i]);
+        if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+    }
+    return "";
+};
+
 document.addEventListener('DOMContentLoaded', function () {
     let calendarEl = document.getElementById('calendar');
 
@@ -71,5 +81,23 @@ document.addEventListener('DOMContentLoaded', function () {
         selectOverlap: false,
         dayMaxEvents: false
     });
-    calendar.render();
+    if(getCookie('prefLang') == "en" || getCookie('prefLang') == ""){
+        calendar.render();
+    }else if(getCookie('prefLang') == "af"){
+        calendar.setOption('locale', 'af');
+        calendar.render();
+    }else if(getCookie('prefLang') == "nso"){
+        calendar.setOption('locale', 'nso');
+        calendar.render();
+    } else if(getCookie('prefLang') == "xh"){
+        calendar.setOption('locale', 'xh');
+        calendar.render();
+    } else if(getCookie('prefLang') == "zu"){
+        calendar.setOption('locale', 'zu');
+        calendar.render();
+    }
 });
+
+
+
+

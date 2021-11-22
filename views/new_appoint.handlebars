@@ -1,4 +1,15 @@
 <div class="row">
+    <div class="message containerBox">
+        <form action="/close" method="POST">
+            <button class="close" name="close" on type="submit">Appoint</button>
+        </form>
+        <button class="close" name="close" on type="submit">Cancel</button>
+    </div>
+</div>
+
+{{!-- {{#if messageHide}}{{messageHide}}{{else}}hidden{{/if}} --}}
+
+<div class="row">
     <div class="col-12">
         <div id='calendar'></div>
     </div>

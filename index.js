@@ -8,7 +8,6 @@ const sqlite3 = require('sqlite3');
 const { open } = require('sqlite');
 const { google } = require('googleapis');
 const gcal = require('./googleCal');
-const cookieParser = require('cookie-parser');
 const config = require('./APIKEY');
 
 const app = express();
@@ -23,8 +22,6 @@ app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 app.use(express.static('public'));
-//app.use("/public", express.static('public'));
-app.use(cookieParser());
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -33,8 +30,10 @@ app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 } }));
 
 app.use(i18n({
     translationsPath: path.join(__dirname, 'i18n'),
+    cookieLangName: 'prefLang',
+    defaultLang: "en",
     siteLangs: ["en", "zu", "af", "xh", "nso"],
-    textsVarName: 'translation'
+    textsVarName: 'translation',
 }));
 
 open({
@@ -56,6 +55,13 @@ open({
         res.render('landingPage', {
             layouts: 'main',
         });
+    });
+
+    app.post('/', function (req, res) {
+        req.session.prefLang = req.body.prefLang
+        res.cookie('prefLang', req.session.prefLang);
+        
+        res.redirect("/?clang=" + req.session.prefLang);
     });
 
     app.get('/login', function (req, res) {
@@ -97,11 +103,11 @@ open({
     });
 
     app.post('/register', async function (req, res) {
-            let register = 'INSERT INTO patient_login(Firstname, Lastname, DOB, Gender, IDno, ConNo, Email, LangPref, Pwd) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
+        let register = 'INSERT INTO patient_login(Firstname, Lastname, DOB, Gender, IDno, ConNo, Email, LangPref, Pwd) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
 
-            await db.run(register, req.body.firstName, req.body.lastName, req.body.DOB, req.body.gender, req.body.IDno, req.body.cellNo, req.body.email, req.body.language, req.body.password);
+        await db.run(register, req.body.firstName, req.body.lastName, req.body.DOB, req.body.gender, req.body.IDno, req.body.cellNo, req.body.email, req.body.language, req.body.password);
 
-            res.redirect('/login');
+        res.redirect('/login');
     });
 
     app.post('/back', async function (req, res) {

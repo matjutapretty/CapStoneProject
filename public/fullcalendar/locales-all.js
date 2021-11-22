@@ -1782,10 +1782,73 @@
     noEventsText: '没有任何活動',
   };
 
+  var l78 = {
+    code: 'xh',
+    week: {
+      dow: 1, // 
+      doy: 4, // 
+    },
+    buttonText: {
+      prev: 'Ngaphambili',
+      next: 'Okulandelayo',
+      today: 'Namhlanje',
+      year: 'Unyaka',
+      month: 'Inyanga',
+      week: 'Iveki',
+      day: 'Usuku',
+      list: 'I-ajenda',
+    },
+    allDayText: 'Yonke imini',
+    moreLinkText: 'Ezongezelelweyo',
+    noEventsText: 'Akukho ziganeko',
+  };
+
+  var l79 = {
+    code: 'zu',
+    week: {
+      dow: 1, // 
+      doy: 4, // 
+    },
+    buttonText: {
+      prev: 'Ngaphambilini',
+      next: 'Olandelayo',
+      today: 'Namuhla',
+      year: 'Unyaka',
+      month: 'Inyanga',
+      week: 'Isonto',
+      day: 'Usuku',
+      list: 'I-ajenda',
+    },
+    allDayText: 'Usuku lonke',
+    moreLinkText: 'Okwengeziwe',
+    noEventsText: 'Ayikho imicimbi',
+  };
+
+  var l80 = {
+    code: 'nso',
+    week: {
+      dow: 1, // Maandag is die eerste dag van die week.
+      doy: 4, // Die week wat die 4de Januarie bevat is die eerste week van die jaar.
+    },
+    buttonText: {
+      prev: 'E fetileng',
+      next: 'Wa go latela',
+      today: 'Kajeno',
+      year: 'Ngwaga',
+      month: 'Kgwedi',
+      week: 'Beke',
+      day: 'Letsatsi',
+      list: 'Lenaneo',
+    },
+    allDayText: 'Letsatsi lohle',
+    moreLinkText: 'Tlatsetso',
+    noEventsText: 'Ha ho na liketsahalo',
+  };
+
   /* eslint max-len: off */
 
   var localesAll = [
-    l0, l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11, l12, l13, l14, l15, l16, l17, l18, l19, l20, l21, l22, l23, l24, l25, l26, l27, l28, l29, l30, l31, l32, l33, l34, l35, l36, l37, l38, l39, l40, l41, l42, l43, l44, l45, l46, l47, l48, l49, l50, l51, l52, l53, l54, l55, l56, l57, l58, l59, l60, l61, l62, l63, l64, l65, l66, l67, l68, l69, l70, l71, l72, l73, l74, l75, l76, l77, 
+    l0, l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11, l12, l13, l14, l15, l16, l17, l18, l19, l20, l21, l22, l23, l24, l25, l26, l27, l28, l29, l30, l31, l32, l33, l34, l35, l36, l37, l38, l39, l40, l41, l42, l43, l44, l45, l46, l47, l48, l49, l50, l51, l52, l53, l54, l55, l56, l57, l58, l59, l60, l61, l62, l63, l64, l65, l66, l67, l68, l69, l70, l71, l72, l73, l74, l75, l76, l77, l78, l79, l80
   ];
 
   return localesAll;

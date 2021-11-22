@@ -1,6 +1,4 @@
 ﻿var keys = [
-    "litTermsOfUsePolicyPrivacy",//disclaimerText
-    "litDisclaimerNotChecked",//disclaimerNotAcceptedText
     "litAddAdditionalComplaints",//noSelectedSymptomsText
     "litEmergencyInfo",//diagnosisMessage
     "litEmptyDiagnosisDataTemplate",//noDiagnosisMessage
@@ -12,7 +10,6 @@
     "genSelectSymptoms",//selectSymptomsText
     "genSelectedSymptoms",//selectedSymptomsText
     "genPossibleDiseases",//possibleDiseasesText
-    "btnGenerateDiagnose",//makeDiagnosisText
     "txtProfessionalName",//litProfName
     "genShortDescription",//litShortDescription
     "genDescription",//litDescription
@@ -21,12 +18,8 @@
     "genFollow1",//litFollow
     "genTreatment",//litTreatment
     "litPossibleSymptoms",//litPossibleSymptoms
-    "litTermsOfUse", //litTermsOfUse
-    "litPrivacyPolicy" // litPrivacyPolicy
 ];
 
-var disclaimerText = "";
-var disclaimerNotAcceptedText = "";
 var noSelectedSymptomsText = "";
 var diagnosisMessage = "";
 var noDiagnosisMessage = "";
@@ -38,7 +31,6 @@ var typeYourSymptomsText = "";
 var selectSymptomsText = "";
 var selectedSymptomsText = "";
 var possibleDiseasesText = "";
-var makeDiagnosisText = "";
 
 var litProfName = "";
 var litShortDescription = "";
@@ -48,9 +40,56 @@ var litSymptom = "";
 var litFollow = "";
 var litTreatment = "";
 var litPossibleSymptoms = "";
-var litTermsOfUse = "";
-var litPrivacyPolicy = "";
-var resObj = {};
+var resObj = {
+    "af": {
+        "noSelectedSymptomsText" : "Jy kan verdere voorwaardes byvoeg. Kies asseblief een/veelvuldige mediese toestand(e) deur die toepaslike liggaamsdeel op die prent te klik.",
+        "diagnosisMessage" : "In die volgende sal jy aanbevole dokterspesialisasie vind wat gebaseer is op jou siektepatroon. As jy dink jy kan 'n mediese, lewensgevaarlike noodgeval hê, moet jy dadelik na noodgeval gaan of kontak.",
+        "noDiagnosisMessage" : "Daar is geen ontleding beskikbaar vir die geselekteerde toestande nie.",
+        "proposedSymptomsText" : "Het jy een van die volgende simptome?",
+        "skinText" : "Vel, Gewrigte en Algemeen",
+        "bornOnText" : "Geboorte Jaar",
+        "typeYourSymptomsText" : "Tik jou simptome hier",
+        "selectSymptomsText" : "Kies Simptome",
+        "selectedSymptomsText" : "Geselekteerde Simptome",
+        "possibleDiseasesText" : "Moontlike Siektes",
+    },
+    "nso": {
+        "noSelectedSymptomsText" : "O ka eketsa maemo a mang. Ka kopo, khetha boemo bo le bong/bo bongata ba bongaka ka ho tobetsa karolo e nepahetseng ea 'mele setšoantšong.",
+        "diagnosisMessage" : "Ho tse latelang u tla fumana khothaletso ea ngaka e khethehileng e thehiloeng ho mokhoa oa hau oa lefu. Haeba u nahana hore u ka ba le boemo ba tšohanyetso ba bongaka, bo behang bophelo kotsing, u lokela ho ea hang-hang kapa u ikopanye le maemo a tšohanyetso.",
+        "noDiagnosisMessage" : "Ha ho na tlhahlobo e fumanehang bakeng sa maemo a khethiloeng.",
+        "proposedSymptomsText" : "A na u na le le leng la matšoao a latelang?",
+        "skinText" : "Letlalo, Manonyello & Kakaretso",
+        "bornOnText" : "Ngwaga wa matswalo",
+        "typeYourSymptomsText" : "Ngola mona matšoao a hau",
+        "selectSymptomsText" : "Khetha Matšoao",
+        "selectedSymptomsText" : "Matšoao a khethiloeng",
+        "possibleDiseasesText" : "Mafu a ka bang teng",
+    },
+    "xh": {
+        "noSelectedSymptomsText" : "Unokongeza eminye imiqathango. Nceda ukhethe enye/iimeko zonyango ezininzi ngokucofa indawo efanelekileyo yomzimba emfanekisweni.",
+        "diagnosisMessage" : "Koku kulandelayo uya kufumana ubungcali obucetyisiweyo bogqirha obusekwe kwipateni yesifo sakho. Ukuba ucinga ukuba unonyango olungxamisekileyo, kufuneka ukhawuleze uye okanye uqhagamshelane nongxamiseko.",
+        "noDiagnosisMessage" : "Akukho hlalutyo lukhoyo lweemeko ezikhethiweyo.",
+        "proposedSymptomsText" : "Ngaba unayo enye yezi mpawu zilandelayo?",
+        "skinText" : "Ulusu, Amalungu & Jikelele",
+        "bornOnText" : "Umhla Wokuzalwa",
+        "typeYourSymptomsText" : "Chwetheza apha iimpawu zakho",
+        "selectSymptomsText" : "Khetha Iimpawu",
+        "selectedSymptomsText" : "Iimpawu Ezikhethiweyo",
+        "possibleDiseasesText" : "Izifo Ezinokwenzeka",
+    },
+    "zu": {
+        "noSelectedSymptomsText" : "Ungangeza eminye imibandela. Sicela ukhethe eyodwa/izimo zezempilo eziningi ngokuchofoza ingxenye yomzimba efanele esithombeni.",
+        "diagnosisMessage" : "Kulokhu okulandelayo uzothola ubungcweti bodokotela obunconyiwe obususelwa kuphethini yesifo sakho. Uma ucabanga ukuthi unesimo esiphuthumayo sezokwelapha, esisongela ukuphila, kufanele uye ngokushesha noma uxhumane nezimo eziphuthumayo.",
+        "noDiagnosisMessage" : "Akukho ukuhlaziya okutholakalayo kwezimo ezikhethiwe.",
+        "proposedSymptomsText" : "Ingabe unayo enye yalezi zimpawu ezilandelayo?",
+        "skinText" : "Isikhumba, Amalunga & Okujwayelekile",
+        "bornOnText" : "Unyaka wokuzalwa",
+        "typeYourSymptomsText" : "Thayipha lapha izimpawu zakho",
+        "selectSymptomsText" : "Khetha izimpawu",
+        "selectedSymptomsText" : "Izimpawu ezikhethiwe",
+        "possibleDiseasesText" : "Izifo ezingenzeka",
+    }
+};
 
 /////////////////////////////Optional parameters//////////////////////////////////
 
@@ -67,7 +106,7 @@ var language = "en-gb";
 var token = getCookie('Token');
 
 /// Specialisation search url
-var specUrl = "sampleSpecialisationPage";
+var specUrl = "/";
 
 /// Include always all specialisations for custom urls
 var includeAllSpec = false;
@@ -979,18 +1018,18 @@ var mode = "diagnosis";
     }
 
     function _makeDiagnosis() {
-            var options = new Object();
+        var options = new Object();
 
-            options.Symptoms = _symptomList.symptomList("GetSelectedSymptoms");
-            options.Gender = _selectedGender;
-            options.YearOfBirth = _selectedYear;
-            if (mode == "diagnosis")
-                $("#" + _diagnosisListId).diagnosis("GetDiagnosis", options);
+        options.Symptoms = _symptomList.symptomList("GetSelectedSymptoms");
+        options.Gender = _selectedGender;
+        options.YearOfBirth = _selectedYear;
+        if (mode == "diagnosis")
+            $("#" + _diagnosisListId).diagnosis("GetDiagnosis", options);
 
-            if (mode == "specialisations")
-                $("#" + _diagnosisListId).specialisations("GetSpecialisations", options);
+        if (mode == "specialisations")
+            $("#" + _diagnosisListId).specialisations("GetSpecialisations", options);
 
-            _symptomList.symptomList("LoadProposedSymptoms", options);
+        _symptomList.symptomList("LoadProposedSymptoms", options);
 
     }
 
@@ -1089,12 +1128,8 @@ var mode = "diagnosis";
     }
 
     function SetTranslationResources() {
-
-        if (resObj != null) {
-            disclaimerText = resObj.litTermsOfUsePolicyPrivacy;
-            litTermsOfUse = resObj.litTermsOfUse;
-            litPrivacyPolicy = resObj.litPrivacyPolicy;
-            disclaimerNotAcceptedText = resObj.litDisclaimerNotChecked;
+        
+        if (getCookie('prefLang') == "en" || getCookie('prefLang') == "") {
             noSelectedSymptomsText = resObj["litAddAdditionalComplaints"];
             diagnosisMessage = resObj["litEmergencyInfo"];
             noDiagnosisMessage = resObj["litEmptyDiagnosisDataTemplate"];
@@ -1116,7 +1151,75 @@ var mode = "diagnosis";
             litFollow = resObj.genFollow1;
             litTreatment = resObj.genTreatment;
             litPossibleSymptoms = resObj.litPossibleSymptoms;
-        }
+        } else if(getCookie('prefLang') == "af"){
+            noSelectedSymptomsText = resObj.af.noSelectedSymptomsText;
+            diagnosisMessage = resObj.af.diagnosisMessage;
+            noDiagnosisMessage = resObj.af.noDiagnosisMessage;
+            proposedSymptomsText = resObj.af.proposedSymptomsText;
+            skinText = resObj.af.skinText;
+            bornOnText = resObj.af.bornOnText;
+            typeYourSymptomsText = resObj.af.typeYourSymptomsText;
+            selectSymptomsText = resObj.af.selectSymptomsText;
+            selectedSymptomsText = resObj.af.selectedSymptomsText;
+            possibleDiseasesText = resObj.af.possibleDiseasesText;
+        } else if(getCookie('prefLang') == "nso"){
+            noSelectedSymptomsText = resObj.nso.noSelectedSymptomsText;
+            diagnosisMessage = resObj.nso.diagnosisMessage;
+            noDiagnosisMessage = resObj.nso.noDiagnosisMessage;
+            proposedSymptomsText = resObj.nso.proposedSymptomsText;
+            skinText = resObj.nso.skinText;
+            bornOnText = resObj.nso.bornOnText;
+            typeYourSymptomsText = resObj.nso.typeYourSymptomsText;
+            selectSymptomsText = resObj.nso.selectSymptomsText;
+            selectedSymptomsText = resObj.nso.selectedSymptomsText;
+            possibleDiseasesText = resObj.nso.possibleDiseasesText;
+        } else if(getCookie('prefLang') == "xh"){
+            noSelectedSymptomsText = resObj.xh.noSelectedSymptomsText;
+            diagnosisMessage = resObj.xh.diagnosisMessage;
+            noDiagnosisMessage = resObj.xh.noDiagnosisMessage;
+            proposedSymptomsText = resObj.xh.proposedSymptomsText;
+            skinText = resObj.xh.skinText;
+            bornOnText = resObj.xh.bornOnText;
+            typeYourSymptomsText = resObj.xh.typeYourSymptomsText;
+            selectSymptomsText = resObj.xh.selectSymptomsText;
+            selectedSymptomsText = resObj.xh.selectedSymptomsText;
+            possibleDiseasesText = resObj.xh.possibleDiseasesText;
+        } else if(getCookie('prefLang') == "zu"){
+            noSelectedSymptomsText = resObj.zu.noSelectedSymptomsText;
+            diagnosisMessage = resObj.zu.diagnosisMessage;
+            noDiagnosisMessage = resObj.zu.noDiagnosisMessage;
+            proposedSymptomsText = resObj.zu.proposedSymptomsText;
+            skinText = resObj.zu.skinText;
+            bornOnText = resObj.zu.bornOnText;
+            typeYourSymptomsText = resObj.zu.typeYourSymptomsText;
+            selectSymptomsText = resObj.zu.selectSymptomsText;
+            selectedSymptomsText = resObj.zu.selectedSymptomsText;
+            possibleDiseasesText = resObj.zu.possibleDiseasesText;
+        } 
+
+        // if (resObj != null) {
+        //     noSelectedSymptomsText = resObj["litAddAdditionalComplaints"];
+        //     diagnosisMessage = resObj["litEmergencyInfo"];
+        //     noDiagnosisMessage = resObj["litEmptyDiagnosisDataTemplate"];
+        //     proposedSymptomsText = resObj["litSuggestedSymptoms"];
+        //     symptomListMessage = resObj["litCarouselItem4"];
+        //     skinText = resObj["genAvatarText"];
+        //     bornOnText = resObj.litYears;
+        //     typeYourSymptomsText = resObj.litSearchSymptoms;
+        //     selectSymptomsText = resObj.genSelectSymptoms;
+        //     selectedSymptomsText = resObj.genSelectedSymptoms;
+        //     possibleDiseasesText = resObj.genPossibleDiseases;
+
+        //     makeDiagnosisText = resObj.btnGenerateDiagnose;
+        //     litProfName = resObj.txtProfessionalName;
+        //     litShortDescription = resObj.genShortDescription;
+        //     litDescription = resObj.genDescription;
+        //     litOccurrence = resObj.genOccurrence;
+        //     litSymptom = resObj.genSymptom;
+        //     litFollow = resObj.genFollow1;
+        //     litTreatment = resObj.genTreatment;
+        //     litPossibleSymptoms = resObj.litPossibleSymptoms;
+        // }
     }
 
     //////////////////end private functions//////////////////////////////////////////
@@ -1651,23 +1754,9 @@ var mode = "diagnosis";
         return symptoms;
     }
 
-    function _addGenerateDiagnosisButton() {
-        var btnGenerateDiagnosis = jQuery("<input/>", {
-            "value": makeDiagnosisText,
-            "id": "btnGenerateDiagnosis",
-            "type": "button"
-        });
-
-        btnGenerateDiagnosis.bind('click', function () {
-            _makeDiagnosis();
-        });
-
-        return btnGenerateDiagnosis;
-    }
-
     function _makeDiagnosis() {
         _avatarOptions.Symptoms = _getSelectedSymptoms();
-        if (mode == "diagnosis"){
+        if (mode == "diagnosis") {
             $("#" + _diagnosisListId).diagnosis("GetDiagnosis", _avatarOptions);
         }
 
@@ -1879,10 +1968,7 @@ var mode = "diagnosis";
                 });
                 var spec = jQuery("<a/>", {
                     "text": this.Name,
-                    //TODO possible implementations:
-                    //"href": specUrl + "/" + this.Name + "/" + this.ID
-                    //"href": specUrl + "?specId=" + this.SpecialistID
-                    "href": specUrl + "/" + "specId" + this.SpecialistID + ".html"
+                    "href": "/new_appointment"
                 });
 
                 specListElement.append(spec);
