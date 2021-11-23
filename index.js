@@ -84,6 +84,8 @@ open({
                     if (patient_login.length != 0) {
                         req.session.username = patient_login[0].IDno;
                         req.session.password = patient_login[0].Pwd;
+                        req.session.firstName = patient_login[0].Firstname;
+                        req.session.lastName = patient_login[0].Lastname
                         res.redirect('/service');
                     } else {
                         req.session.username = ' ';
@@ -137,16 +139,16 @@ open({
     app.get('/new_appointment', function (req, res) {
         res.render('new_appoint', {
             layouts: 'main',
-            username: req.session.username
+            username: req.session.firstName +" "+ req.session.lastName
         });
     });
 
     app.post('/new_appointment', function (req, res) {
         var start = req.cookies.gcalStart;
         var end = req.cookies.gcalEnd;
-    
+
         let event = {
-            'summary': `Appointment for` + req.session.username,
+            'summary': `Appointment for ` + req.session.firstName +" "+ req.session.lastName,
             'description': `Test description.`,
             'start': {
                 'dateTime': start.toString(),
@@ -157,10 +159,9 @@ open({
                 'timeZone': 'Africa/Johannesburg'
             }
         };
-        
+
         gcal.insertEvent(event);
-        
-        res.redirect("/new_appointment")
+        res.redirect('/new_appointment')
     });
 
     app.get('/followUp', function (req, res) {

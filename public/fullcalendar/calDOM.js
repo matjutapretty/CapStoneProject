@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             appDate.innerHTML = dateString(arg.start).day + "/" + dateString(arg.start).month + "/" + dateString(arg.start).year;
             appTime.innerHTML = appStart + " - " + appEnd;
-            
+
             popUp.classList.remove("hide");
         },
         eventClick: function (arg) {
