@@ -38,7 +38,6 @@ const insertEvent = async (event) => {
 };
 
 module.exports = {
-    dateTimeForCalander,
     insertEvent
 }
 
