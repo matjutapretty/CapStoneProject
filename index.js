@@ -1,6 +1,7 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser')
 const session = require('express-session');
 const path = require('path');
 const i18n = require("i18n-express");
@@ -24,6 +25,8 @@ app.use(express.static('public'));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+app.use(cookieParser())
 
 app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 } }));
 
@@ -139,9 +142,25 @@ open({
     });
 
     app.post('/new_appointment', function (req, res) {
-        let dateTime = gcal.dateTimeForCalander();
-        console.log(dateTime['start']);
-        console.log(dateTime['end']);
+        var start = req.cookies.gcalStart;
+        var end = req.cookies.gcalEnd;
+    
+        let event = {
+            'summary': `Appointment for` + req.session.username,
+            'description': `Test description.`,
+            'start': {
+                'dateTime': start.toString(),
+                'timeZone': 'Africa/Johannesburg'
+            },
+            'end': {
+                'dateTime': end.toString(),
+                'timeZone': 'Africa/Johannesburg'
+            }
+        };
+        
+        gcal.insertEvent(event);
+        
+        res.redirect("/new_appointment")
     });
 
     app.get('/followUp', function (req, res) {

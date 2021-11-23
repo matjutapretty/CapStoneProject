@@ -8,7 +8,7 @@ function getCookie(cname) {
     return "";
 };
 
-function dateString(arg){
+function dateString(arg) {
     let year = arg.getFullYear();
     let month = arg.getMonth() + 1;
     if (month < 10) {
@@ -24,7 +24,8 @@ function dateString(arg){
     }
 }
 
-function timeString(arg){
+function timeString(arg) {
+
     let hour = arg.getHours();
     if (hour < 10) {
         hour = `0${hour}`;
@@ -37,6 +38,34 @@ function timeString(arg){
     return {
         hour, minute
     }
+}
+
+function gcal(date) {
+    const TIMEOFFSET = '+02:00';
+
+    let year = date.getFullYear();
+    let month = date.getMonth() + 1;
+    if (month < 10) {
+        month = `0${month}`;
+    }
+    let day = date.getDate();
+    if (day < 10) {
+        day = `0${day}`;
+    }
+    let hour = date.getHours();
+    if (hour < 10) {
+        hour = `0${hour}`;
+    }
+    let minute = date.getMinutes();
+    if (minute < 10) {
+        minute = `0${minute}`;
+    }
+
+    let newDateTime = `${year}-${month}-${day}T${hour}:${minute}:00${TIMEOFFSET}`;
+
+    let startDate = newDateTime;
+   
+    return startDate
 }
 
 let popUp = document.getElementById('message');
@@ -103,23 +132,20 @@ document.addEventListener('DOMContentLoaded', function () {
         selectConstraint: 'businessHours',
         selectMirror: true,
         select: function (arg) {
-
             let popUp = document.getElementById('message');
 
             start = arg.start;
             end = arg.end
-            //2021-11-23T12:25:00.000Z
-            //console.log(Object.keys(arg.start))
 
-            // start = arg.start.getFullYear() + "-" + arg.start.getMonth() + "-" + arg.start.getDate() + "T" + arg.start.getHours() + ":" + arg.start.getMinutes() + ":" + arg.start.getSeconds();
-
-            // end = arg.end.getFullYear() + "-" + arg.end.getMonth() + "-" + arg.end.getDate() + "T" + arg.end.getHours() + ":" + arg.end.getMinutes() + ":" + arg.end.getSeconds();
+            document.cookie = "gcalStart=" + gcal(start);
+            document.cookie = "gcalEnd=" + gcal(end);
             
             appStart = timeString(arg.start).hour + ":" + timeString(arg.start).minute;
             appEnd = timeString(arg.end).hour + ":" + timeString(arg.end).minute;
-            
-            appDate.innerHTML = dateString(arg.start).day+"/"+dateString(arg.start).month+"/"+dateString(arg.start).year;
+
+            appDate.innerHTML = dateString(arg.start).day + "/" + dateString(arg.start).month + "/" + dateString(arg.start).year;
             appTime.innerHTML = appStart + " - " + appEnd;
+            
             popUp.classList.remove("hide");
         },
         eventClick: function (arg) {
@@ -148,7 +174,12 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     appoint.addEventListener("click", function () {
-       
+        calendar.addEvent({
+            title: "Appointment",
+            start: start,
+            end: end,
+        })
+        calendar.unselect();
     });
 
     cancel.addEventListener("click", function () {
