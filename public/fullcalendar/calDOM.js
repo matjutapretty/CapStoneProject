@@ -8,6 +8,47 @@ function getCookie(cname) {
     return "";
 };
 
+function dateString(arg){
+    let year = arg.getFullYear();
+    let month = arg.getMonth() + 1;
+    if (month < 10) {
+        month = `0${month}`;
+    }
+    let day = arg.getDate();
+    if (day < 10) {
+        day = `0${day}`;
+    }
+
+    return {
+        year, month, day
+    }
+}
+
+function timeString(arg){
+    let hour = arg.getHours();
+    if (hour < 10) {
+        hour = `0${hour}`;
+    }
+    let minute = arg.getMinutes();
+    if (minute < 10) {
+        minute = `0${minute}`;
+    }
+
+    return {
+        hour, minute
+    }
+}
+
+let popUp = document.getElementById('message');
+let appoint = document.getElementById('appoint');
+let cancel = document.getElementById('cancel');
+let appDate = document.getElementById('date');
+let appTime = document.getElementById('time');
+let start = "";
+let end = "";
+let appStart = "";
+let appEnd = "";
+
 document.addEventListener('DOMContentLoaded', function () {
     let calendarEl = document.getElementById('calendar');
 
@@ -43,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
             omitZeroMinute: false,
             meridiem: 'short'
         },
-        hiddenDays: [ 0 ],
+        hiddenDays: [0],
         businessHours: [
             {
                 daysOfWeek: [1, 2, 3, 4, 5],
@@ -62,15 +103,24 @@ document.addEventListener('DOMContentLoaded', function () {
         selectConstraint: 'businessHours',
         selectMirror: true,
         select: function (arg) {
-            var title = prompt('Event Title:');
-            if (title) {
-                calendar.addEvent({
-                    title: title,
-                    start: arg.start,
-                    end: arg.end,
-                })
-            }
-            calendar.unselect()
+
+            let popUp = document.getElementById('message');
+
+            start = arg.start;
+            end = arg.end
+            //2021-11-23T12:25:00.000Z
+            //console.log(Object.keys(arg.start))
+
+            // start = arg.start.getFullYear() + "-" + arg.start.getMonth() + "-" + arg.start.getDate() + "T" + arg.start.getHours() + ":" + arg.start.getMinutes() + ":" + arg.start.getSeconds();
+
+            // end = arg.end.getFullYear() + "-" + arg.end.getMonth() + "-" + arg.end.getDate() + "T" + arg.end.getHours() + ":" + arg.end.getMinutes() + ":" + arg.end.getSeconds();
+            
+            appStart = timeString(arg.start).hour + ":" + timeString(arg.start).minute;
+            appEnd = timeString(arg.end).hour + ":" + timeString(arg.end).minute;
+            
+            appDate.innerHTML = dateString(arg.start).day+"/"+dateString(arg.start).month+"/"+dateString(arg.start).year;
+            appTime.innerHTML = appStart + " - " + appEnd;
+            popUp.classList.remove("hide");
         },
         eventClick: function (arg) {
             if (confirm('Are you sure you want to delete this event?')) {
@@ -81,23 +131,40 @@ document.addEventListener('DOMContentLoaded', function () {
         selectOverlap: false,
         dayMaxEvents: false
     });
-    if(getCookie('prefLang') == "en" || getCookie('prefLang') == ""){
+    if (getCookie('prefLang') == "en" || getCookie('prefLang') == "") {
         calendar.render();
-    }else if(getCookie('prefLang') == "af"){
+    } else if (getCookie('prefLang') == "af") {
         calendar.setOption('locale', 'af');
         calendar.render();
-    }else if(getCookie('prefLang') == "nso"){
+    } else if (getCookie('prefLang') == "nso") {
         calendar.setOption('locale', 'nso');
         calendar.render();
-    } else if(getCookie('prefLang') == "xh"){
+    } else if (getCookie('prefLang') == "xh") {
         calendar.setOption('locale', 'xh');
         calendar.render();
-    } else if(getCookie('prefLang') == "zu"){
+    } else if (getCookie('prefLang') == "zu") {
         calendar.setOption('locale', 'zu');
         calendar.render();
     }
+
+    appoint.addEventListener("click", function () {
+       
+    });
+
+    cancel.addEventListener("click", function () {
+        popUp.classList.add("hide");
+    });
 });
 
 
 
 
+// var title = prompt('Event Title:');
+// if (title) {
+//     calendar.addEvent({
+//         title: title,
+//         start: arg.start,
+//         end: arg.end,
+//     })
+// }
+// calendar.unselect();

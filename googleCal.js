@@ -81,18 +81,16 @@ module.exports = {
     insertEvent
 }
 
-let dateTime = dateTimeForCalander();
-
 // Event for Google Calendar
-let event = {
-    'summary': `This is the test summary.`,
-    'description': `This is the description.`,
-    'start': {
-        'dateTime': dateTime['start'],
-        'timeZone': 'Africa/Johannesburg'
-    },
-    'end': {
-        'dateTime': dateTime['end'],
-        'timeZone': 'Africa/Johannesburg'
-    }
-};
+// let event = {
+//     'summary': `This is the test summary.`,
+//     'description': `This is the description.`,
+//     'start': {
+//         'dateTime': dateTime['start'], 
+//         'timeZone': 'Africa/Johannesburg'
+//     },
+//     'end': {
+//         'dateTime': dateTime['end'],
+//         'timeZone': 'Africa/Johannesburg'
+//     }
+// };

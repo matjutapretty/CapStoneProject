@@ -6,7 +6,6 @@ const path = require('path');
 const i18n = require("i18n-express");
 const sqlite3 = require('sqlite3');
 const { open } = require('sqlite');
-const { google } = require('googleapis');
 const gcal = require('./googleCal');
 const config = require('./APIKEY');
 
@@ -60,7 +59,7 @@ open({
     app.post('/', function (req, res) {
         req.session.prefLang = req.body.prefLang
         res.cookie('prefLang', req.session.prefLang);
-        
+
         res.redirect("/?clang=" + req.session.prefLang);
     });
 
@@ -132,16 +131,17 @@ open({
         });
     });
 
-    app.get('/test', function (req, res) {
-        res.render('test', {
-            layouts: 'main',
-        });
-    });
-
     app.get('/new_appointment', function (req, res) {
         res.render('new_appoint', {
             layouts: 'main',
+            username: req.session.username
         });
+    });
+
+    app.post('/new_appointment', function (req, res) {
+        let dateTime = gcal.dateTimeForCalander();
+        console.log(dateTime['start']);
+        console.log(dateTime['end']);
     });
 
     app.get('/followUp', function (req, res) {
