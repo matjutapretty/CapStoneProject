@@ -42,52 +42,56 @@ var litTreatment = "";
 var litPossibleSymptoms = "";
 var resObj = {
     "af": {
-        "noSelectedSymptomsText" : "Jy kan verdere voorwaardes byvoeg. Kies asseblief een/veelvuldige mediese toestand(e) deur die toepaslike liggaamsdeel op die prent te klik.",
-        "diagnosisMessage" : "In die volgende sal jy aanbevole dokterspesialisasie vind wat gebaseer is op jou siektepatroon. As jy dink jy kan 'n mediese, lewensgevaarlike noodgeval hê, moet jy dadelik na noodgeval gaan of kontak.",
-        "noDiagnosisMessage" : "Daar is geen ontleding beskikbaar vir die geselekteerde toestande nie.",
-        "proposedSymptomsText" : "Het jy een van die volgende simptome?",
-        "skinText" : "Vel, Gewrigte en Algemeen",
-        "bornOnText" : "Geboorte Jaar",
-        "typeYourSymptomsText" : "Tik jou simptome hier",
-        "selectSymptomsText" : "Kies Simptome",
-        "selectedSymptomsText" : "Geselekteerde Simptome",
-        "possibleDiseasesText" : "Moontlike Siektes",
+        "noSelectedSymptomsText": "Jy kan verdere voorwaardes byvoeg. Kies asseblief een/veelvuldige mediese toestand(e) deur die toepaslike liggaamsdeel op die prent te klik.",
+        "diagnosisMessage": "In die volgende sal jy aanbevole dokterspesialisasie vind wat gebaseer is op jou siektepatroon. As jy dink jy kan 'n mediese, lewensgevaarlike noodgeval hê, moet jy dadelik na noodgeval gaan of kontak.",
+        "noDiagnosisMessage": "Daar is geen ontleding beskikbaar vir die geselekteerde toestande nie.",
+        "proposedSymptomsText": "Het jy een van die volgende simptome?",
+        "skinText": "Vel, Gewrigte en Algemeen",
+        "bornOnText": "Geboorte Jaar",
+        "typeYourSymptomsText": "Tik jou simptome hier",
+        "selectSymptomsText": "Kies Simptome",
+        "selectedSymptomsText": "Geselekteerde Simptome",
+        "possibleDiseasesText": "Moontlike Siektes",
+        "redflagMessage": "Jy het 'n simptoom gekies wat 'n spoedige ondersoek met 'n mediese dokter vereis",
     },
     "nso": {
-        "noSelectedSymptomsText" : "O ka eketsa maemo a mang. Ka kopo, khetha boemo bo le bong/bo bongata ba bongaka ka ho tobetsa karolo e nepahetseng ea 'mele setšoantšong.",
-        "diagnosisMessage" : "Ho tse latelang u tla fumana khothaletso ea ngaka e khethehileng e thehiloeng ho mokhoa oa hau oa lefu. Haeba u nahana hore u ka ba le boemo ba tšohanyetso ba bongaka, bo behang bophelo kotsing, u lokela ho ea hang-hang kapa u ikopanye le maemo a tšohanyetso.",
-        "noDiagnosisMessage" : "Ha ho na tlhahlobo e fumanehang bakeng sa maemo a khethiloeng.",
-        "proposedSymptomsText" : "A na u na le le leng la matšoao a latelang?",
-        "skinText" : "Letlalo, Manonyello & Kakaretso",
-        "bornOnText" : "Ngwaga wa matswalo",
-        "typeYourSymptomsText" : "Ngola mona matšoao a hau",
-        "selectSymptomsText" : "Khetha Matšoao",
-        "selectedSymptomsText" : "Matšoao a khethiloeng",
-        "possibleDiseasesText" : "Mafu a ka bang teng",
+        "noSelectedSymptomsText": "O ka eketsa maemo a mang. Ka kopo, khetha boemo bo le bong/bo bongata ba bongaka ka ho tobetsa karolo e nepahetseng ea 'mele setšoantšong.",
+        "diagnosisMessage": "Ho tse latelang u tla fumana khothaletso ea ngaka e khethehileng e thehiloeng ho mokhoa oa hau oa lefu. Haeba u nahana hore u ka ba le boemo ba tšohanyetso ba bongaka, bo behang bophelo kotsing, u lokela ho ea hang-hang kapa u ikopanye le maemo a tšohanyetso.",
+        "noDiagnosisMessage": "Ha ho na tlhahlobo e fumanehang bakeng sa maemo a khethiloeng.",
+        "proposedSymptomsText": "A na u na le le leng la matšoao a latelang?",
+        "skinText": "Letlalo, Manonyello & Kakaretso",
+        "bornOnText": "Ngwaga wa matswalo",
+        "typeYourSymptomsText": "Ngola mona matšoao a hau",
+        "selectSymptomsText": "Khetha Matšoao",
+        "selectedSymptomsText": "Matšoao a khethiloeng",
+        "possibleDiseasesText": "Mafu a ka bang teng",
+        "redflagMessage": "U khethile letšoao le hlokang ho hlahlojoa kapele le ngaka.",
     },
     "xh": {
-        "noSelectedSymptomsText" : "Unokongeza eminye imiqathango. Nceda ukhethe enye/iimeko zonyango ezininzi ngokucofa indawo efanelekileyo yomzimba emfanekisweni.",
-        "diagnosisMessage" : "Koku kulandelayo uya kufumana ubungcali obucetyisiweyo bogqirha obusekwe kwipateni yesifo sakho. Ukuba ucinga ukuba unonyango olungxamisekileyo, kufuneka ukhawuleze uye okanye uqhagamshelane nongxamiseko.",
-        "noDiagnosisMessage" : "Akukho hlalutyo lukhoyo lweemeko ezikhethiweyo.",
-        "proposedSymptomsText" : "Ngaba unayo enye yezi mpawu zilandelayo?",
-        "skinText" : "Ulusu, Amalungu & Jikelele",
-        "bornOnText" : "Umhla Wokuzalwa",
-        "typeYourSymptomsText" : "Chwetheza apha iimpawu zakho",
-        "selectSymptomsText" : "Khetha Iimpawu",
-        "selectedSymptomsText" : "Iimpawu Ezikhethiweyo",
-        "possibleDiseasesText" : "Izifo Ezinokwenzeka",
+        "noSelectedSymptomsText": "Unokongeza eminye imiqathango. Nceda ukhethe enye/iimeko zonyango ezininzi ngokucofa indawo efanelekileyo yomzimba emfanekisweni.",
+        "diagnosisMessage": "Koku kulandelayo uya kufumana ubungcali obucetyisiweyo bogqirha obusekwe kwipateni yesifo sakho. Ukuba ucinga ukuba unonyango olungxamisekileyo, kufuneka ukhawuleze uye okanye uqhagamshelane nongxamiseko.",
+        "noDiagnosisMessage": "Akukho hlalutyo lukhoyo lweemeko ezikhethiweyo.",
+        "proposedSymptomsText": "Ngaba unayo enye yezi mpawu zilandelayo?",
+        "skinText": "Ulusu, Amalungu & Jikelele",
+        "bornOnText": "Umhla Wokuzalwa",
+        "typeYourSymptomsText": "Chwetheza apha iimpawu zakho",
+        "selectSymptomsText": "Khetha Iimpawu",
+        "selectedSymptomsText": "Iimpawu Ezikhethiweyo",
+        "possibleDiseasesText": "Izifo Ezinokwenzeka",
+        "redflagMessage": "Ukhethe uphawu olufuna uqwalaselo olukhawulezileyo nogqirha wezonyango.",
     },
     "zu": {
-        "noSelectedSymptomsText" : "Ungangeza eminye imibandela. Sicela ukhethe eyodwa/izimo zezempilo eziningi ngokuchofoza ingxenye yomzimba efanele esithombeni.",
-        "diagnosisMessage" : "Kulokhu okulandelayo uzothola ubungcweti bodokotela obunconyiwe obususelwa kuphethini yesifo sakho. Uma ucabanga ukuthi unesimo esiphuthumayo sezokwelapha, esisongela ukuphila, kufanele uye ngokushesha noma uxhumane nezimo eziphuthumayo.",
-        "noDiagnosisMessage" : "Akukho ukuhlaziya okutholakalayo kwezimo ezikhethiwe.",
-        "proposedSymptomsText" : "Ingabe unayo enye yalezi zimpawu ezilandelayo?",
-        "skinText" : "Isikhumba, Amalunga & Okujwayelekile",
-        "bornOnText" : "Unyaka wokuzalwa",
-        "typeYourSymptomsText" : "Thayipha lapha izimpawu zakho",
-        "selectSymptomsText" : "Khetha izimpawu",
-        "selectedSymptomsText" : "Izimpawu ezikhethiwe",
-        "possibleDiseasesText" : "Izifo ezingenzeka",
+        "noSelectedSymptomsText": "Ungangeza eminye imibandela. Sicela ukhethe eyodwa/izimo zezempilo eziningi ngokuchofoza ingxenye yomzimba efanele esithombeni.",
+        "diagnosisMessage": "Kulokhu okulandelayo uzothola ubungcweti bodokotela obunconyiwe obususelwa kuphethini yesifo sakho. Uma ucabanga ukuthi unesimo esiphuthumayo sezokwelapha, esisongela ukuphila, kufanele uye ngokushesha noma uxhumane nezimo eziphuthumayo.",
+        "noDiagnosisMessage": "Akukho ukuhlaziya okutholakalayo kwezimo ezikhethiwe.",
+        "proposedSymptomsText": "Ingabe unayo enye yalezi zimpawu ezilandelayo?",
+        "skinText": "Isikhumba, Amalunga & Okujwayelekile",
+        "bornOnText": "Unyaka wokuzalwa",
+        "typeYourSymptomsText": "Thayipha lapha izimpawu zakho",
+        "selectSymptomsText": "Khetha izimpawu",
+        "selectedSymptomsText": "Izimpawu ezikhethiwe",
+        "possibleDiseasesText": "Izifo ezingenzeka",
+        "redflagMessage": "Ukhethe uphawu oludinga ukuhlolwa ngokushesha nodokotela.",
     }
 };
 
@@ -1128,7 +1132,7 @@ var mode = "diagnosis";
     }
 
     function SetTranslationResources() {
-        
+
         if (getCookie('prefLang') == "en" || getCookie('prefLang') == "") {
             noSelectedSymptomsText = resObj["litAddAdditionalComplaints"];
             diagnosisMessage = resObj["litEmergencyInfo"];
@@ -1151,7 +1155,7 @@ var mode = "diagnosis";
             litFollow = resObj.genFollow1;
             litTreatment = resObj.genTreatment;
             litPossibleSymptoms = resObj.litPossibleSymptoms;
-        } else if(getCookie('prefLang') == "af"){
+        } else if (getCookie('prefLang') == "af") {
             noSelectedSymptomsText = resObj.af.noSelectedSymptomsText;
             diagnosisMessage = resObj.af.diagnosisMessage;
             noDiagnosisMessage = resObj.af.noDiagnosisMessage;
@@ -1162,7 +1166,7 @@ var mode = "diagnosis";
             selectSymptomsText = resObj.af.selectSymptomsText;
             selectedSymptomsText = resObj.af.selectedSymptomsText;
             possibleDiseasesText = resObj.af.possibleDiseasesText;
-        } else if(getCookie('prefLang') == "nso"){
+        } else if (getCookie('prefLang') == "nso") {
             noSelectedSymptomsText = resObj.nso.noSelectedSymptomsText;
             diagnosisMessage = resObj.nso.diagnosisMessage;
             noDiagnosisMessage = resObj.nso.noDiagnosisMessage;
@@ -1173,7 +1177,7 @@ var mode = "diagnosis";
             selectSymptomsText = resObj.nso.selectSymptomsText;
             selectedSymptomsText = resObj.nso.selectedSymptomsText;
             possibleDiseasesText = resObj.nso.possibleDiseasesText;
-        } else if(getCookie('prefLang') == "xh"){
+        } else if (getCookie('prefLang') == "xh") {
             noSelectedSymptomsText = resObj.xh.noSelectedSymptomsText;
             diagnosisMessage = resObj.xh.diagnosisMessage;
             noDiagnosisMessage = resObj.xh.noDiagnosisMessage;
@@ -1184,7 +1188,7 @@ var mode = "diagnosis";
             selectSymptomsText = resObj.xh.selectSymptomsText;
             selectedSymptomsText = resObj.xh.selectedSymptomsText;
             possibleDiseasesText = resObj.xh.possibleDiseasesText;
-        } else if(getCookie('prefLang') == "zu"){
+        } else if (getCookie('prefLang') == "zu") {
             noSelectedSymptomsText = resObj.zu.noSelectedSymptomsText;
             diagnosisMessage = resObj.zu.diagnosisMessage;
             noDiagnosisMessage = resObj.zu.noDiagnosisMessage;
@@ -1195,31 +1199,8 @@ var mode = "diagnosis";
             selectSymptomsText = resObj.zu.selectSymptomsText;
             selectedSymptomsText = resObj.zu.selectedSymptomsText;
             possibleDiseasesText = resObj.zu.possibleDiseasesText;
-        } 
+        }
 
-        // if (resObj != null) {
-        //     noSelectedSymptomsText = resObj["litAddAdditionalComplaints"];
-        //     diagnosisMessage = resObj["litEmergencyInfo"];
-        //     noDiagnosisMessage = resObj["litEmptyDiagnosisDataTemplate"];
-        //     proposedSymptomsText = resObj["litSuggestedSymptoms"];
-        //     symptomListMessage = resObj["litCarouselItem4"];
-        //     skinText = resObj["genAvatarText"];
-        //     bornOnText = resObj.litYears;
-        //     typeYourSymptomsText = resObj.litSearchSymptoms;
-        //     selectSymptomsText = resObj.genSelectSymptoms;
-        //     selectedSymptomsText = resObj.genSelectedSymptoms;
-        //     possibleDiseasesText = resObj.genPossibleDiseases;
-
-        //     makeDiagnosisText = resObj.btnGenerateDiagnose;
-        //     litProfName = resObj.txtProfessionalName;
-        //     litShortDescription = resObj.genShortDescription;
-        //     litDescription = resObj.genDescription;
-        //     litOccurrence = resObj.genOccurrence;
-        //     litSymptom = resObj.genSymptom;
-        //     litFollow = resObj.genFollow1;
-        //     litTreatment = resObj.genTreatment;
-        //     litPossibleSymptoms = resObj.litPossibleSymptoms;
-        // }
     }
 
     //////////////////end private functions//////////////////////////////////////////
@@ -1646,7 +1627,17 @@ var mode = "diagnosis";
     function _getRedFlagCallback(redFlagText) {
         if (redFlagText !== null && redFlagText !== "") {
             _redFlagMessage.show();
-            _redFlagMessage.find("#redFlagContent span").html(redFlagText);
+            if (getCookie('prefLang') == "en" || getCookie('prefLang') == "") {
+                _redFlagMessage.find("#redFlagContent span").html(redFlagText);
+            } else if (getCookie('prefLang') == "af") {
+                _redFlagMessage.find("#redFlagContent span").html(resObj.af.redflagMessage);
+            } else if (getCookie('prefLang') == "nso") {
+                _redFlagMessage.find("#redFlagContent span").html(resObj.nso.redflagMessage);
+            } else if (getCookie('prefLang') == "xh") {
+                _redFlagMessage.find("#redFlagContent span").html(resObj.xh.redflagMessage);
+            } else if (getCookie('prefLang') == "zu") {
+                _redFlagMessage.find("#redFlagContent span").html(resObj.zu.redflagMessage);
+            }
         }
     }
 
