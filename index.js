@@ -50,6 +50,7 @@ open({
     // only setup the routes once the database connection has been established
 
     app.get('/', function (req, res) {
+        res.cookie('lastRoute', req.route.path);
         // await db.all('SELECT * FROM customer')
         //     .then(function (customer) {
         //         console.log(customer);
@@ -62,11 +63,17 @@ open({
     app.post('/', function (req, res) {
         req.session.prefLang = req.body.prefLang
         res.cookie('prefLang', req.session.prefLang);
+        req.cookies.lastRoute
+        if (req.cookies.lastRoute == "/") {
+            res.redirect("/?clang=" + req.session.prefLang);
 
-        res.redirect("/?clang=" + req.session.prefLang);
+        } else {
+            res.redirect(req.cookies.lastRoute + "/?clang=" + req.session.prefLang);
+        }
     });
 
     app.get('/login', function (req, res) {
+        res.cookie('lastRoute', req.route.path);
         res.render('login', {
             layouts: 'main',
             login_Message: req.session.message
@@ -101,6 +108,7 @@ open({
     });
 
     app.get('/register', function (req, res) {
+        res.cookie('lastRoute', req.route.path);
         res.render('registration', {
             layouts: 'main',
         });
@@ -119,27 +127,31 @@ open({
     });
 
     app.get('/service', function (req, res) {
+        res.cookie('lastRoute', req.route.path);
         res.render('service', {
             layouts: 'main',
         });
     });
 
     app.get('/appointment', function (req, res) {
+        res.cookie('lastRoute', req.route.path);
         res.render('appoint', {
             layouts: 'main',
         });
     });
 
     app.get('/medication', function (req, res) {
+        res.cookie('lastRoute', req.route.path);
         res.render('med', {
             layouts: 'main',
         });
     });
 
     app.get('/new_appointment', function (req, res) {
+        res.cookie('lastRoute', req.route.path);
         res.render('new_appoint', {
             layouts: 'main',
-            username: req.session.firstName +" "+ req.session.lastName
+            username: req.session.firstName + " " + req.session.lastName
         });
     });
 
@@ -148,7 +160,7 @@ open({
         var end = req.cookies.gcalEnd;
 
         let event = {
-            'summary': `Appointment for ` + req.session.firstName +" "+ req.session.lastName,
+            'summary': `Appointment for ` + req.session.firstName + " " + req.session.lastName,
             'description': `Test description.`,
             'start': {
                 'dateTime': start.toString(),
@@ -165,6 +177,7 @@ open({
     });
 
     app.get('/followUp', function (req, res) {
+        res.cookie('lastRoute', req.route.path);
         res.cookie('Token', config.TOKEN._W);
         res.render('followUp', {
             layouts: 'main',
