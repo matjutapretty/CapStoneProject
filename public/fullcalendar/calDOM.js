@@ -186,16 +186,3 @@ document.addEventListener('DOMContentLoaded', function () {
         popUp.classList.add("hide");
     });
 });
-
-
-
-
-// var title = prompt('Event Title:');
-// if (title) {
-//     calendar.addEvent({
-//         title: title,
-//         start: arg.start,
-//         end: arg.end,
-//     })
-// }
-// calendar.unselect();
