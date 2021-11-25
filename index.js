@@ -1,7 +1,7 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
-var cookieParser = require('cookie-parser')
+let cookieParser = require('cookie-parser')
 const session = require('express-session');
 const path = require('path');
 const i18n = require("i18n-express");
@@ -12,7 +12,7 @@ const config = require('./APIKEY');
 
 const app = express();
 
-var hbs = exphbs.create({
+let hbs = exphbs.create({
     layoutsDir: './views/layouts',
     helpers: {}
 });
@@ -151,17 +151,21 @@ open({
         res.cookie('lastRoute', req.route.path);
         res.render('new_appoint', {
             layouts: 'main',
-            username: req.session.firstName + " " + req.session.lastName
+            username: req.session.firstName + " " + req.session.lastName,
+            symptoms: req.cookies.gcalSymp,
+            diagnosis: req.cookies.gcalDiag,
         });
     });
 
     app.post('/new_appointment', function (req, res) {
-        var start = req.cookies.gcalStart;
-        var end = req.cookies.gcalEnd;
+        let start = req.cookies.gcalStart;
+        let end = req.cookies.gcalEnd;
+        let symptom = req.cookies.gcalSymp;
+        let diagnosis = req.cookies.gcalDiag;
 
         let event = {
             'summary': `Appointment for ` + req.session.firstName + " " + req.session.lastName,
-            'description': `Test description.`,
+            'description': `Patient Name: ${req.session.firstName} ${req.session.lastName}\nID no.: ${req.session.username}\nSymptoms: ${symptom}\nPossible Diagnosis: ${diagnosis}`,
             'start': {
                 'dateTime': start.toString(),
                 'timeZone': 'Africa/Johannesburg'
