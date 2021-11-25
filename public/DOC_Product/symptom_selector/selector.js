@@ -1667,13 +1667,26 @@ var mode = "diagnosis";
 
         setCookie("selectedSymptoms", selected);
 
+        var symp = _getSelectedSymp();
+        if (inArray(symptom.Name, symp) >= 0)// already exist
+            return;
+
+        var sympSelect = getCookie("gcalSymp");
+
+        if (sympSelect != "")
+            sympSelect += "," + symptom.Name;
+        else
+            sympSelect = symptom.Name;
+
+        setCookie("gcalSymp", sympSelect);
+
         if (redirectUrl !== "") {
             setTimeout(function () { window.location = redirectUrl; }, 500);
             return;
         }
 
         _createSelectedSymptomElement(symptom);
-        _symptomList.find(".symptom_" + symptom.ID).hide();      
+        _symptomList.find(".symptom_" + symptom.ID).hide();
 
         _showTerms();
         _ajaxGetRedFlagText(symptom.ID);
@@ -1723,6 +1736,7 @@ var mode = "diagnosis";
 
         btnRemove.bind('click', function () {
             _removeSymptom(symptom.ID);
+            _removeSymp(symptom.Name);
             $(this).parent().remove();
         });
 
@@ -1738,6 +1752,15 @@ var mode = "diagnosis";
             symptoms = selected.split(",");
 
         return symptoms;
+    }
+
+    function _getSelectedSymp() {
+        var symp = new Array();
+        var sympSelected = getCookie("gcalSymp");
+        if (sympSelected !== "")
+            symp = sympSelected.split(",");
+
+        return symp;
     }
 
     function _makeDiagnosis() {
@@ -1766,6 +1789,18 @@ var mode = "diagnosis";
         _symptomList.find(".symptom_" + symptomId).show();
 
         _makeDiagnosis();
+    }
+
+    function _removeSymp(symptom) {
+        var sympSelected = _getSelectedSymp();
+
+        for (let i = 0; i < sympSelected.length; i++) {
+            if (symptom == sympSelected[i]) {
+                sympSelected.splice(i, 1);
+            }
+        }
+
+        setCookie("gcalSymp", sympSelected);
     }
 
     function _createNoSymptomsSelectedMessage() {
@@ -1887,6 +1922,31 @@ var mode = "diagnosis";
         _diagnosisList.append(_createDiagnosisNameElement(diagnosis.Issue.ID, diagnosis.Issue.Name));
         _diagnosisList.append(_createProbabilityElement(diagnosis.Issue.Accuracy));
         _diagnosisList.append(_createSpecialisationElement(diagnosis.Specialisation));
+
+        gcalDiag(diagnosis.Issue.Name);
+    }
+
+    function gcalDiag(diagnosis) {
+        var diagCookie = getCookie("gcalDiag");
+        var diagArr = new Array();
+        var diagObj = {};
+        var resultArr = new Array();
+
+        if (diagCookie != "") {
+            diagCookie += "," + diagnosis;
+            diagArr = diagCookie.split(",");
+            for (let i = 0; i < diagArr.length; i++) {
+                diagObj[diagArr[i]] = 0
+            }
+            for (i in diagObj) {
+                resultArr.push(i);
+            }
+            setCookie("gcalDiag", resultArr);
+        } else {
+            diagCookie = diagnosis;
+            setCookie("gcalDiag", diagCookie);
+        }
+
     }
 
     function _addDiagnosisCallback(diagnosis) {
