@@ -149,9 +149,8 @@ document.addEventListener('DOMContentLoaded', function () {
             popUp.classList.remove("hide");
         },
         eventClick: function (arg) {
-            if (confirm('Are you sure you want to delete this event?')) {
-                arg.event.remove()
-            }
+           arg.jsEvent.preventDefault();
+            confirm('We have requested the Doctor to remove this appointment')
         },
         editable: true,
         selectOverlap: false,
@@ -185,4 +184,8 @@ document.addEventListener('DOMContentLoaded', function () {
     cancel.addEventListener("click", function () {
         popUp.classList.add("hide");
     });
+
+    setInterval(function(){ 
+        calendar.refetchEvents(); 
+    }, 500);
 });
