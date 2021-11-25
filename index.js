@@ -133,13 +133,6 @@ open({
         });
     });
 
-    app.get('/appointment', function (req, res) {
-        res.cookie('lastRoute', req.route.path);
-        res.render('appoint', {
-            layouts: 'main',
-        });
-    });
-
     app.get('/medication', function (req, res) {
         res.cookie('lastRoute', req.route.path);
         res.render('med', {

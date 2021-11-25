@@ -501,13 +501,22 @@ input[type='radio']:after {
   text-align: center;
   font-size: 20pt;
   font-weight: bold;
-  height: 40%;
-  width: 40%;
+  height: 50%;
+  width: 42%;
   background-color: #f8f8f9f8;
 }
 
 .messBtn {
   display: inline-block;
+}
+
+.messTitle {
+  font-weight: bold;
+}
+
+.messP {
+  padding: 5px;
+  text-align: left;
 }
 
 #appointTable {

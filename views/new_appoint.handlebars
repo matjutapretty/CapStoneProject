@@ -1,12 +1,14 @@
 <div id="message" class="row hide">
     <div class="col-2"></div>
-    <div class="col-8 center">
+    <div class="col-8">
         <div class="message containerBox">
-            <p>Patient Name: {{username}}</p>
-            <p>Symptoms: {{symptoms}}</p>
-            <p>Possible Diagnosis: {{diagnosis}}</p>
-            <p>Appointment Date: <span id="date"></span></p>
-            <p>Appointment Time: <span id="time"></span></p>
+            <p class="messP"><span class="messTitle">{{translation.PatientName}}:</span> {{username}}</p>
+            <p class="messP"><span class="messTitle">{{translation.Symptoms}}:</span> {{symptoms}}</p>
+            <p class="messP"><span class="messTitle">{{translation.PossiableDiagnosis}}:</span> {{diagnosis}}</p>
+            <p class="messP"><span class="messTitle">{{translation.AppointmentDate}}:</span> <span class="messSpan"
+                    id="date"></span></p>
+            <p class="messP"><span class="messTitle">{{translation.AppointmentTime}}:</span> <span class="messSpan"
+                    id="time"></span></p>
             <table id="appointTable">
                 <tr>
                     <td>
