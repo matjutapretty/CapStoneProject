@@ -92,7 +92,13 @@ open({
                         req.session.username = patient_login[0].IDno;
                         req.session.password = patient_login[0].Pwd;
                         req.session.firstName = patient_login[0].Firstname;
-                        req.session.lastName = patient_login[0].Lastname
+                        req.session.lastName = patient_login[0].Lastname;
+                        req.session.number = patient_login[0].ConNo;
+                        req.session.email = patient_login[0].Email;
+                        req.session.prefLang = patient_login[0].LangPref;
+
+                        res.cookie('prefLang', req.session.prefLang);
+
                         res.redirect('/service');
                     } else {
                         req.session.username = ' ';
@@ -134,9 +140,53 @@ open({
     });
 
     app.get('/medication', function (req, res) {
+        req.session.status = "Packed - Ready for Collection/Delivery";
         res.cookie('lastRoute', req.route.path);
         res.render('med', {
             layouts: 'main',
+            firstname: req.session.firstName,
+            surname: req.session.lastName,
+            number: req.session.number,
+            email: req.session.email,
+            Doctor: "Dr Baloyi",
+            pDate: "26 Oct 2021",
+            pRepeat: "6 Months",
+            repeatRemain: "5 Months",
+            medStatus: req.session.status
+        });
+    });
+
+    app.post('/collect', function(req, res){
+        res.cookie('lastRoute', req.route.path);
+        req.session.status = "Set for Collection"
+        res.render('med', {
+            layouts: 'main',
+            firstname: req.session.firstName,
+            surname: req.session.lastName,
+            number: req.session.number,
+            email: req.session.email,
+            Doctor: "Dr Baloyi",
+            pDate: "26 Oct 2021",
+            pRepeat: "6 Months",
+            repeatRemain: "5 Months",
+            medStatus: req.session.status
+        });
+    });
+
+    app.post('/deliver', function(req, res){
+        res.cookie('lastRoute', req.route.path);
+        req.session.status = "Set for Delivery"
+        res.render('med', {
+            layouts: 'main',
+            firstname: req.session.firstName,
+            surname: req.session.lastName,
+            number: req.session.number,
+            email: req.session.email,
+            Doctor: "Dr Baloyi",
+            pDate: "26 Oct 2021",
+            pRepeat: "6 Months",
+            repeatRemain: "5 Months",
+            medStatus: req.session.status
         });
     });
 

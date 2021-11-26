@@ -1,0 +1,115 @@
+<div class="row">
+
+    <div class="col-6 left">
+        <h4 class="center">{{translation.PatientDetails}}</h4>
+        <p><span class="messTitle">{{translation.FirstName}}:</span> {{firstname}}</p>
+        <p><span class="messTitle">{{translation.LastName}}:</span> {{surname}}</p>
+        <p><span class="messTitle">{{translation.CellPhoneNumber}}:</span> {{number}}</p>
+        <p><span class="messTitle">{{translation.Email}}:</span> {{email}}</p>
+    </div>
+    <div class="col-6 right">
+        <h4 class="center">{{translation.PrescriptionDetails}}</h4>
+        <p><span class="messTitle">{{translation.Doctor}}:</span> {{Doctor}}</p>
+        <p><span class="messTitle">{{translation.PrescriptionDate}}:</span> {{pDate}}</p>
+        <p><span class="messTitle">{{translation.PrescriptionRepeat}}:</span> {{pRepeat}}</p>
+        <p><span class="messTitle">{{translation.RepeatRemaining}}:</span> {{repeatRemain}}</p>
+    </div>
+
+</div>
+<div class="row">
+
+    <div class="col-12">
+        <h4 class="center">{{translation.PrescribedMedication}}</h4>
+        <table id="medTable">
+            <tr>
+                <th></th>
+                <th class="left">Item</th>
+                <th class="left">Dose</th>
+                <th class="center">Qty</th>
+            </tr>
+
+            <tr>
+                <td>1.</td>
+                <td>HUMALOG KWIKPEN PENSET INJ 100IU/ML 3ml</td>
+                <td>Inject 15-25 Units tds S.C. with meals</td>
+                <td class="center">6</td>
+            </tr>
+            <tr>
+                <td>2.</td>
+                <td>OPTISULIN CARTRIDGE INJ 100IU/ML 3ml</td>
+                <td>Inject 50-80 Units Nocte</td>
+                <td class="center">9</td>
+            </tr>
+            <tr>
+                <td>3.</td>
+                <td>ZUVAMOR TAB 10MG</td>
+                <td>Take 1 Tablet Daily P.O.</td>
+                <td class="center">30</td>
+            </tr>
+            <tr>
+                <td>4.</td>
+                <td>GLUCOPHAGE TAB 1OOOMG</td>
+                <td>Take 1 Tablet bd P.O.</td>
+                <td class="center">60</td>
+            </tr>
+            <tr>
+                <td>5.</td>
+                <td>FERRIMED DS CHTABS CHU 100MG</td>
+                <td>Take 1 Tablet Daily P.O.</td>
+                <td class="center">30</td>
+            </tr>
+            <tr>
+                <td>6.</td>
+                <td>ZARTAN TAB 1OOMG</td>
+                <td>Take 1 Tablet Daily P.O.</td>
+                <td class="center">30</td>
+            </tr>
+            <tr>
+                <td>7.</td>
+                <td>NEEDLE BD PEN NDL 31GX5MM320590</td>
+                <td>Use 1 Needle Daily</td>
+                <td class="center">30</td>
+            </tr>
+            <tr>
+                <td>8.</td>
+                <td>ACCU-CHEK INSTANT STRIP STR 7819382134</td>
+                <td>Test 3 Time Daily</td>
+                <td class="center">90</td>
+            </tr>
+            <tr>
+                <td>9.</td>
+                <td>ACCU-CHEK SOFTCLIX LANCET CSM 3307492001</td>
+                <td>Use 1 Every 2 days</td>
+                <td class="center">15</td>
+            </tr>
+
+        </table>
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-12 center">
+        <p><span class="messTitle">{{translation.Status}}:</span> {{medStatus}}</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12 center">
+        <table id="appointTable">
+            <tr>
+                <td>
+                    <form action="/collect" method="post">
+                        <button class="btn messBtn" id="Collect" name="Collect" on
+                            type="submit">{{translation.Collect}}</button>
+                    </form>
+                </td>
+                <td>
+                    <form action="/deliver" method="post">
+                        <button class="btn messBtn" id="Deliver" name="Deliver" on
+                            type="submit">{{translation.Deliver}}</button>
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

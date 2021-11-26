@@ -524,4 +524,15 @@ input[type='radio']:after {
   margin-right: auto;
 }
 
+#medTable {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  font-size: 15px;
+}
+
+#medTable th{
+  font-size: 18px;
+}
+
 
