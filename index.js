@@ -98,6 +98,10 @@ open({
                         req.session.prefLang = patient_login[0].LangPref;
 
                         res.cookie('prefLang', req.session.prefLang);
+                        res.cookie('firstName', req.session.firstName);
+                        res.cookie('lastName', req.session.lastName);
+                        res.cookie('number', req.session.number);
+                        res.cookie('email', req.session.email);
 
                         res.redirect('/service');
                     } else {
@@ -144,10 +148,10 @@ open({
         res.cookie('lastRoute', req.route.path);
         res.render('med', {
             layouts: 'main',
-            firstname: req.session.firstName,
-            surname: req.session.lastName,
-            number: req.session.number,
-            email: req.session.email,
+            firstname: req.cookies.firstName,
+            surname: req.cookies.lastName,
+            number: req.cookies.number,
+            email:req.cookies.email,
             Doctor: "Dr Baloyi",
             pDate: "26 Oct 2021",
             pRepeat: "6 Months",
@@ -161,10 +165,10 @@ open({
         req.session.status = "Set for Collection"
         res.render('med', {
             layouts: 'main',
-            firstname: req.session.firstName,
-            surname: req.session.lastName,
-            number: req.session.number,
-            email: req.session.email,
+            firstname: req.cookies.firstName,
+            surname: req.cookies.lastName,
+            number: req.cookies.number,
+            email: req.cookies.email,
             Doctor: "Dr Baloyi",
             pDate: "26 Oct 2021",
             pRepeat: "6 Months",
@@ -178,10 +182,10 @@ open({
         req.session.status = "Set for Delivery"
         res.render('med', {
             layouts: 'main',
-            firstname: req.session.firstName,
-            surname: req.session.lastName,
-            number: req.session.number,
-            email: req.session.email,
+            firstname: req.cookies.firstName,
+            surname: req.cookies.lastName,
+            number: req.cookies.number,
+            email: req.cookies.email,
             Doctor: "Dr Baloyi",
             pDate: "26 Oct 2021",
             pRepeat: "6 Months",
@@ -194,7 +198,7 @@ open({
         res.cookie('lastRoute', req.route.path);
         res.render('new_appoint', {
             layouts: 'main',
-            username: req.session.firstName + " " + req.session.lastName,
+            username: req.cookies.firstName + " " + req.cookies.lastName,
             symptoms: req.cookies.gcalSymp,
             diagnosis: req.cookies.gcalDiag,
         });
@@ -207,8 +211,8 @@ open({
         let diagnosis = req.cookies.gcalDiag;
 
         let event = {
-            'summary': `Appointment for ` + req.session.firstName + " " + req.session.lastName,
-            'description': `Patient Name: ${req.session.firstName} ${req.session.lastName}\nID no.: ${req.session.username}\nSymptoms: ${symptom}\nPossible Diagnosis: ${diagnosis}`,
+            'summary': `Appointment for ` + req.cookies.firstName + " " + req.cookies.lastName,
+            'description': `Patient Name: ${req.cookies.firstName} ${req.cookies.lastName}\nID no.: ${req.session.username}\nSymptoms: ${symptom}\nPossible Diagnosis: ${diagnosis}`,
             'start': {
                 'dateTime': start.toString(),
                 'timeZone': 'Africa/Johannesburg'
