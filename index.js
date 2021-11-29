@@ -177,7 +177,41 @@ open({
         });
     });
 
+    app.get('/collect', function(req, res){
+        res.cookie('lastRoute', req.route.path);
+        req.session.status = "Set for Collection"
+        res.render('med', {
+            layouts: 'main',
+            firstname: req.cookies.firstName,
+            surname: req.cookies.lastName,
+            number: req.cookies.number,
+            email: req.cookies.email,
+            Doctor: "Dr Baloyi",
+            pDate: "26 Oct 2021",
+            pRepeat: "6 Months",
+            repeatRemain: "5 Months",
+            medStatus: req.session.status
+        });
+    });
+
     app.post('/deliver', function(req, res){
+        res.cookie('lastRoute', req.route.path);
+        req.session.status = "Set for Delivery"
+        res.render('med', {
+            layouts: 'main',
+            firstname: req.cookies.firstName,
+            surname: req.cookies.lastName,
+            number: req.cookies.number,
+            email: req.cookies.email,
+            Doctor: "Dr Baloyi",
+            pDate: "26 Oct 2021",
+            pRepeat: "6 Months",
+            repeatRemain: "5 Months",
+            medStatus: req.session.status
+        });
+    });
+
+    app.get('/deliver', function(req, res){
         res.cookie('lastRoute', req.route.path);
         req.session.status = "Set for Delivery"
         res.render('med', {
